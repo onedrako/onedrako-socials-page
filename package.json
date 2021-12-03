@@ -1,0 +1,55 @@
+{
+  "name": "onedrako_web_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "react.js, styled-components",
+  "scripts": {
+    "start": "webpack-dev-server --config webpackDevelop.config.js --mode development",
+    "build": "webpack --config webpack.config.js --mode production",
+    "lint": "standard --fix",
+    "test": "jest --watch"
+  },
+  "keywords": [],
+  "author": "Gabriel <gabriel_hernandez_95@yahoo.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
+    "babel-jest": "^27.4.2",
+    "eslint-plugin-react": "^7.27.1",
+    "html-loader": "^3.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.3",
+    "react-test-renderer": "^17.0.2",
+    "standard": "^16.0.4",
+    "terser-webpack-plugin": "^5.2.5",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "formik": "^2.2.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.0.2",
+    "styled-components": "^5.3.3",
+    "yup": "^0.32.11"
+  },
+  "standard": {
+    "ignore": [
+      "/api/**",
+      "webpack.config.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}
