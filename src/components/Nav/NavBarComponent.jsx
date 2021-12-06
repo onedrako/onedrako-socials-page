@@ -5,9 +5,9 @@ import { StyledNav } from '../../styles/Nav/StyledNav'
 
 const paths = {
   home: { path: '/', name: 'Home', url: 'https://cdn-icons-png.flaticon.com/512/609/609803.png' },
-  chill: { path: '/chill', name: 'Chill', url: 'https://cdn-icons-png.flaticon.com/512/2111/2111668.png' },
-  productividad: { path: '/productividad', name: 'Productividad', url: 'https://cdn-icons-png.flaticon.com/512/2111/2111668.png' },
-  discord: { path: '/discord', name: 'Discord', url: 'https://cdn-icons.flaticon.com/png/512/2626/premium/2626288.png?token=exp=1638641903~hmac=845d598687cedf65ab6bafddcdce68a9' }
+  chill: { path: 'chill', name: 'Chill', url: 'https://image.flaticon.com/icons/png/512/3291/3291659.png' },
+  productividad: { path: 'productividad', name: 'Productividad', url: 'https://image.flaticon.com/icons/png/512/3291/3291659.png' },
+  discord: { path: 'discord', name: 'Discord', url: 'https://cdn-icons-png.flaticon.com/512/2111/2111370.png' }
 }
 
 // const reducer = (state, action) => {
@@ -25,22 +25,22 @@ const paths = {
 //   }
 // }
 
-const NavBar = () => {
+const NavBarComponent = () => {
   const location = useLocation()
   // const path = location.pathname
   // const [state, dispatch] = useReducer(reducer, paths.home)
 
-  console.log(location.pathname)
+  // console.log(location.pathname)
   return (
     <>
       <StyledNav>
         {(location.pathname === '/') && <NavItem routes={[paths.productividad, paths.chill, paths.discord]} />}
-        {(location.pathname === '/productividad') && <NavItem routes={[paths.home, paths.chill, paths.discord]} />}
-        {(location.pathname === '/chill') && <NavItem routes={[paths.home, paths.productividad, paths.discord]} />}
-        {(location.pathname === '/discord') && <NavItem routes={[paths.home, paths.productividad, paths.chill]} />}
+        {(location.pathname.includes('/productividad')) && <NavItem routes={[paths.home, paths.chill, paths.discord]} />}
+        {(location.pathname.includes('/chill')) && <NavItem routes={[paths.home, paths.productividad, paths.discord]} />}
+        {(location.pathname.includes('/discord')) && <NavItem routes={[paths.home, paths.productividad, paths.chill]} />}
       </StyledNav>
     </>
   )
 }
 
-export { NavBar }
+export { NavBarComponent }

@@ -23,7 +23,7 @@ const StyledNavItems = styled(NavLink)`
   display: flex;
   flex-direction: row;
   place-content: center;
-  padding: 10px;
+  margin : 10px;
   
   & > img {
     height: 20px;

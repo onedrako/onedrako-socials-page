@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledUl, StyledNavItems } from '../../styles/Nav/StyledNavItem'
 
 const NavItem = ({ routes }) => {
-  console.log(routes)
+  // console.log(routes)
   return (
     <StyledUl>
       {routes.map(element => (

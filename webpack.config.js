@@ -8,7 +8,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js', // main, bundle o # en la industria
     assetModuleFilename: 'assets/images/[hash][ext][query]',
-    clean: true
+    clean: true,
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx']
