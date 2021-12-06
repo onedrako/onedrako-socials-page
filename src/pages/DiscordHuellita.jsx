@@ -1,8 +1,10 @@
 import React from 'react'
 import { Titles } from '../components/Discord/Titles'
-import { StyledFormSection } from '../styles/Discord/FormSection'
+import { StyledFormSection } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field } from 'formik'
+import { StyledDivision } from '../styles/Discord/StyledDivision'
+import * as Yup from 'yup'
 
 const DiscordHuellita = () => {
   return (
@@ -33,21 +35,88 @@ const DiscordHuellita = () => {
       <StyledFormSection>
         <StyledTitles>
           <img src='https://image.flaticon.com/icons/png/512/3157/3157914.png' alt='Imagen Formulario' />
-          <h1>Comienza a Llenar Aqui</h1>
-          <Formik
-            initialValues={{ userName: '', country: '', message: '' }}
-            validate={console.log('validando')}
-            onSubmit={values => console.log(values)}
-          >
-            <Form>
-              <label>Nombre de Usuario</label>
-              <Field type='text' name='userName' />
-              <ErrorMessage name='userName' />
-              <br />
-              <button type='submit'>Enviar</button>
-            </Form>
-          </Formik>
+          <h1>Comienza a llenar aqui</h1>
         </StyledTitles>
+        <Formik
+          initialValues={{
+            userName: '',
+            country: '',
+            color: '#000000',
+            userInformation: '',
+            future: '',
+            games: '',
+            arrived: '',
+            message: ''
+          }}
+          onSubmit={values => console.log(values)}
+          validationSchema={Yup.object({
+            userName: Yup.string().required('El nombre de usuario es requerido'),
+            country: Yup.string()
+          })}
+        >
+          <Form>
+            <StyledDivision>
+              <label>Nombre de usuario por el que te conocen (sí usas varios nombres usa saltos de linea por cada nombre)</label>
+              <Field type='text' name='userName' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>¿De que país eres? (Sí tu pais no esta, quejate con Gabito en Sugerencias en Discord para que lo agregue)</label>
+              <Field as='select' name='country'>
+                <option value='Argentina'>Argentina</option>
+                <option value='Bolivia'>Bolivia</option>
+                <option value='Brasil'>Brasil</option>
+                <option value='Chile'>Chile</option>
+                <option value='Colombia'>Colombia</option>
+                <option value='Ecuador'>Ecuador</option>
+                <option value='El Salvador'>El Salvador</option>
+                <option value='España'>España</option>
+                <option value='Estados Unidos'>Estados Unidos</option>
+                <option value='Guatemala'>Guatemala</option>
+                <option value='Honduras'>Honduras</option>
+                <option value='México'>México</option>
+                <option value='Panamá'>Panamá</option>
+                <option value='Perú'>Perú</option>
+                <option value='Portugal'>Portugal</option>
+                <option value='Uruguay'>Uruguay</option>
+                <option value='Venezuela'>Venezuela</option>
+              </Field>
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>Selecciona un color</label>
+              <Field type='color' name='color' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>Descripción sobre ti, ¿qué te gusta hacer?¿a qué te dedicas?¿historia?... en resumen ¿Quién eres?</label>
+              <Field as='textarea' name='userInformation' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>¿Que esperas para ti?, ¿Qué quieres hacer?, ¿Sueños de vida?</label>
+              <Field as='textarea' name='future' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>!Nuevo: ¿Qué juegas?, ¿Donde juegas? (juegos y plataformas favoritas)</label>
+              <Field as='textarea' name='games' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>¿Como llegaste al canal?</label>
+              <Field as='textarea' name='arrived' />
+            </StyledDivision>
+
+            <StyledDivision>
+              <label>Un mensaje/consejo o lo que le quieras decir a las compañeras y compañeros de la comunidad</label>
+              <Field as='textarea' name='message' />
+            </StyledDivision>
+
+            <button type='submit'>Enviar</button>
+
+          </Form>
+        </Formik>
       </StyledFormSection>
 
       <StyledFormSection />
