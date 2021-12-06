@@ -37,12 +37,14 @@ const DiscordHuellita = () => {
           <Formik
             initialValues={{ userName: '', country: '', message: '' }}
             validate={console.log('validando')}
-            onSubmit={console.log('enviando')}
+            onSubmit={values => console.log(values)}
           >
             <Form>
               <label>Nombre de Usuario</label>
               <Field type='text' name='userName' />
               <ErrorMessage name='userName' />
+              <br />
+              <button type='submit'>Enviar</button>
             </Form>
           </Formik>
         </StyledTitles>
