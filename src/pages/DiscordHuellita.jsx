@@ -1,10 +1,13 @@
 import React from 'react'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
+
 import { Titles } from '../components/Discord/Titles'
+import { RequiredMessage } from '../components/Discord/RequiredMessage'
+
 import { StyledFormSection } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
-import { Formik, Form, Field } from 'formik'
 import { StyledDivision } from '../styles/Discord/StyledDivision'
-import * as Yup from 'yup'
 
 const DiscordHuellita = () => {
   return (
@@ -49,20 +52,22 @@ const DiscordHuellita = () => {
             message: ''
           }}
           onSubmit={values => console.log(values)}
-          validationSchema={Yup.object({
-            userName: Yup.string().required('El nombre de usuario es requerido'),
-            country: Yup.string()
+          validationSchema={Yup.object().shape({
+            userName: Yup.string().required(<RequiredMessage message='Por favor, dinos quien eres 😢' />),
+            country: Yup.string().required(<RequiredMessage message='Por favor, dinos de donde eres 😢' />)
           })}
         >
           <Form>
             <StyledDivision>
               <label>Nombre de usuario por el que te conocen (sí usas varios nombres usa saltos de linea por cada nombre)</label>
               <Field type='text' name='userName' />
+              <ErrorMessage name='userName' />
             </StyledDivision>
 
             <StyledDivision>
               <label>¿De que país eres? (Sí tu pais no esta, quejate con Gabito en Sugerencias en Discord para que lo agregue)</label>
               <Field as='select' name='country'>
+                <option value=''>Selecciona un pais</option>
                 <option value='Argentina'>Argentina</option>
                 <option value='Bolivia'>Bolivia</option>
                 <option value='Brasil'>Brasil</option>
@@ -81,6 +86,7 @@ const DiscordHuellita = () => {
                 <option value='Uruguay'>Uruguay</option>
                 <option value='Venezuela'>Venezuela</option>
               </Field>
+              <ErrorMessage name='country' />
             </StyledDivision>
 
             <StyledDivision>

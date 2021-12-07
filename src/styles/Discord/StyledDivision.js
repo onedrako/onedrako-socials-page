@@ -17,5 +17,6 @@ margin: 0 auto;
   & select{
     font-size: 1em;
   }
+
 `
 export { StyledDivision }

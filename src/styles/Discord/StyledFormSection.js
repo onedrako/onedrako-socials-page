@@ -15,10 +15,6 @@ align-items: center;
   padding: 0 10px 0 20px;
 }
 
-& p{
-  margin-bottom: 10px;
-}
-
 & button{
   display: block;
   background: #0b74fe;
