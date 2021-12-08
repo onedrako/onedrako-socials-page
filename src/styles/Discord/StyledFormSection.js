@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { defineFontColor } from '../../containers/defineFontColor'
 
 const StyledP = styled.p`
     margin-bottom: 15px;
@@ -8,12 +9,18 @@ const StyledLi = styled.li`
     margin-bottom: 15px;
 `
 
-const StyledFormSection = styled.section`
+const StyledFormSection = styled.section.attrs(props => ({
+  // ${(props.backgroundColor !== "#000000" &&  props.backgroundcolor || '#212525')},
+  backgroundColor: props.backgroundColor || '#212525'
+}))`
 width: 90%;
 display: grid;
 padding: 20px;
 margin: 20px;
-background: #212525;
+background: ${props => {
+  return props.backgroundColor === '#000000' ? '#212525' : props.backgroundColor
+}};
+color : ${props => defineFontColor(props.backgroundColor)};
 border-radius: 15px;
 margin: 25px auto;
 justify-content: center;

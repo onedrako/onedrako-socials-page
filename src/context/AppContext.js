@@ -7,7 +7,7 @@ const AppProvider = (props) => {
   const [huellitaValues, setHuellitaValues] = useState({
     userName: '',
     country: '',
-    color: '#000000',
+    color: '#212525',
     userInformation: '',
     future: '',
     games: '',

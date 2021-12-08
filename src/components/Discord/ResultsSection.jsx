@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from '../../context/AppContext'
 import { ResultDivision } from './ResultDivision'
 
@@ -12,12 +12,12 @@ const ResultsSection = () => {
   console.log('En resultados', huellitaValues)
   console.log('En resultados', flagUrl)
 
-  if (!userName || !country || !flagUrl || !userInformation) {
-    return null
-  }
+  // if (!userName || !country || !flagUrl || !userInformation) {
+  //   return null
+  // }
 
   return (
-    <StyledFormSection>
+    <StyledFormSection backgroundColor={color}>
       <ContentSection>
         {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />}
         <div>
