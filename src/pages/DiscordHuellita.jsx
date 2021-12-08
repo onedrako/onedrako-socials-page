@@ -9,6 +9,7 @@ import { ResultsSection } from '../components/Discord/ResultsSection'
 import { StyledFormSection, StyledP, StyledLi } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
 import { FormContainer } from '../styles/Discord/FormContainer'
+import { StyledContainerForIDownload } from '../styles/Discord/StyledContainerForIDownload'
 
 const DiscordHuellita = () => {
   return (
@@ -46,9 +47,9 @@ const DiscordHuellita = () => {
 
       <ResultsSection id='capture' />
 
-      <div id='downloadImg'>
+      <StyledContainerForIDownload id='downloadImg'>
         <button onClick={() => getCapture()}>Obtener Captura</button>
-      </div>
+      </StyledContainerForIDownload>
 
     </FormContainer>
   )

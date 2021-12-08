@@ -1,15 +1,23 @@
-import html2canvas from 'html2canvas'
+import domtoimage from 'dom-to-image'
 
 const getCapture = () => {
-  html2canvas(document.querySelector('#capture')).then(canvas => {
-    const container = document.querySelector('#downloadImg')
+  const container = document.querySelector('#downloadImg')
 
-    const preImage = document.querySelector('canvas')
-    if (preImage) {
-      container.removeChild(preImage)
-    }
+  const capture = document.querySelector('#capture')
+  const preImage = document.querySelector('#Presentation-Img')
 
-    container.appendChild(canvas)
+  if (preImage) {
+    container.removeChild(preImage)
+  }
+
+  domtoimage.toPng(capture).then(dataUrl => {
+    const img = new Image()
+    img.src = dataUrl
+    img.id = 'Presentation-Img'
+    console.log(img.src)
+    document.querySelector('#downloadImg').appendChild(img)
+  }).catch(err => {
+    console.error(err)
   })
 }
 
