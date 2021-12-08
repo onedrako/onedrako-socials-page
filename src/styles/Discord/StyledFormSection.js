@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+const StyledP = styled.p`
+    margin-bottom: 15px;
+`
+
+const StyledLi = styled.li`
+    margin-bottom: 15px;
+`
+
 const StyledFormSection = styled.section`
 width: 90%;
 display: grid;
@@ -32,4 +40,4 @@ align-items: center;
 }
 `
 
-export { StyledFormSection }
+export { StyledFormSection, StyledP, StyledLi }

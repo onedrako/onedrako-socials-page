@@ -18,5 +18,9 @@ margin: 0 auto;
     font-size: 1em;
   }
 
+  & textarea{
+    height: 150px;
+  }
+
 `
 export { StyledDivision }

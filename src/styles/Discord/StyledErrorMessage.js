@@ -5,7 +5,8 @@ const Div = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  height: 30px;
+  height: 45px;
+  min-width: 250px;
 `
 
 const Img = styled.img`
@@ -14,8 +15,10 @@ const Img = styled.img`
     margin-right: 10px;
 `
 const P = styled.p`
+  display: inline-block;
   color: red;
   margin-bottom: 0;
+  width: 90%;
 `
 
 export { Img, P, Div }
