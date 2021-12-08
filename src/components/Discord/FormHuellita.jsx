@@ -95,7 +95,7 @@ const FormHuellita = () => {
           <Field as='textarea' name='message' />
         </StyledDivision>
 
-        <button type='submit'>Enviar</button>
+        <button type='submit'>Generar Presentación </button>
 
       </Form>
     </Formik>

@@ -4,7 +4,7 @@ const FormContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
 
   @media (min-width: 1400px) {

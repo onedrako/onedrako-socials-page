@@ -6,18 +6,18 @@ import { ContentSection } from '../../styles/Discord/StyledContentSection'
 import { StyledDiv } from '../../styles/Discord/StyledResultInfo'
 import { StyledFormSection } from '../../styles/Discord/StyledFormSection'
 
-const ResultsSection = () => {
+const ResultsSection = ({ id }) => {
   const { huellitaValues, flagUrl } = useContext(AppContext)
   const { userName, country, color, userInformation, games, arrived, future, message } = huellitaValues
   console.log('En resultados', huellitaValues)
   console.log('En resultados', flagUrl)
 
-  // if (!userName || !country || !flagUrl || !userInformation) {
-  //   return null
-  // }
+  if (!userName || !country || !flagUrl || !userInformation) {
+    return null
+  }
 
   return (
-    <StyledFormSection backgroundColor={color}>
+    <StyledFormSection backgroundColor={color} id={id}>
       <ContentSection>
         {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />}
         <div>

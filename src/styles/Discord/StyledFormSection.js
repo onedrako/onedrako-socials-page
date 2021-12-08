@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { defineFontColor } from '../../containers/defineFontColor'
+import { defineFontColor } from '../../utils/defineFontColor'
 
 const StyledP = styled.p`
     margin-bottom: 15px;
@@ -36,14 +36,16 @@ box-shadow: 0px 2px 10px rgba(100, 100, 100, 0.4);
   background: #0b74fe;
   color: white;
   border: none;
+  height: 60px;
   height: 30px;
-  width: 175px;
+  width: 200px;
+  border-radius: 10px;
   font-size: 18px;
   margin: 35px auto 0 auto;
 }
 
 & button:hover{
-  background: #0b81fe;
+  background: #24c6db;
   cursor: pointer;
 }
 
