@@ -25,6 +25,7 @@ border-radius: 15px;
 margin: 25px auto;
 justify-content: center;
 align-items: center;
+box-shadow: 0px 2px 10px rgba(100, 100, 100, 0.4);
 
 & ol{
   padding: 0 10px 0 20px;
@@ -44,6 +45,10 @@ align-items: center;
 & button:hover{
   background: #0b81fe;
   cursor: pointer;
+}
+
+@media (min-width: 750px) {
+  width: 650px;
 }
 `
 

@@ -2,14 +2,15 @@ import React from 'react'
 
 import { Titles } from '../components/Discord/Titles'
 import { FormHuellita } from '../components/Discord/FormHuellita'
+import { ResultsSection } from '../components/Discord/ResultsSection'
 
 import { StyledFormSection, StyledP, StyledLi } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
-import { ResultsSection } from '../components/Discord/ResultsSection'
+import { FormContainer } from '../styles/Discord/FormContainer'
 
 const DiscordHuellita = () => {
   return (
-    <>
+    <FormContainer>
       <StyledFormSection>
         <StyledTitles>
           <img src='https://image.flaticon.com/icons/png/512/2626/2626288.png' alt='Discord' />
@@ -43,7 +44,7 @@ const DiscordHuellita = () => {
 
       <ResultsSection />
 
-    </>
+    </FormContainer>
   )
 }
 

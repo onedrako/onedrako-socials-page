@@ -19,7 +19,9 @@ margin: 0 auto;
   }
 
   & textarea{
-    height: 150px;
+    height: 80px;
+    padding: 10px;
+    font-size: 1rem;
   }
 
 `
