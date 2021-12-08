@@ -41,9 +41,7 @@ const DiscordHuellita = () => {
         <FormHuellita />
       </StyledFormSection>
 
-      <StyledFormSection>
-        <ResultsSection />
-      </StyledFormSection>
+      <ResultsSection />
 
     </>
   )
