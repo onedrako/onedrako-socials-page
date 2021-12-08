@@ -1,37 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useReducer } from 'react'
 import { AppContext } from '../../context/AppContext'
 import { ResultDivision } from './ResultDivision'
+
 import { ContentSection } from '../../styles/Discord/StyledContentSection'
+import { StyledDiv } from '../../styles/Discord/StyledResultInfo'
 
 const ResultsSection = () => {
-  const { huellitaValues } = useContext(AppContext)
-  const { userName, country, color, userInformation, games, arrived, future, message, url } = huellitaValues
+  const { huellitaValues, flagUrl } = useContext(AppContext)
+  const { userName, country, color, userInformation, games, arrived, future, message } = huellitaValues
+  console.log('En resultados', huellitaValues)
+  console.log('En resultados', flagUrl)
+
+  if (!userName || !country || !flagUrl) {
+    return null
+  }
 
   return (
     <ContentSection>
-      <ResultDivision userName={userName} country={country} urlFlag={url} />
-      <div>
-        <div>
-          <h2>Sobre Mí:</h2>
-          <p>Soy</p>
-        </div>
-        <div>
-          <h2>Espero:</h2>
-          <p>Quiero</p>
-        </div>
-        <div>
-          <h2>Juegazos</h2>
-          <p>Juego</p>
-        </div>
-        <div>
-          <h2>llegue al Canal</h2>
-          <p>OneDrako</p>
-        </div>
-        <div>
-          <h2>Mensaje para la Muchachada</h2>
-          <p>Abajo la Chaska</p>
-        </div>
 
+      {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />}
+      <div>
+        {userInformation &&
+          <StyledDiv>
+            <h2>Sobre Mi:</h2>
+            <p>{userInformation}</p>
+          </StyledDiv>}
+
+        <StyledDiv>
+          <h2>Espero:</h2>
+          <p>{future}</p>
+        </StyledDiv>
+        <StyledDiv>
+          <h2>Juegazos:</h2>
+          <p>{games}</p>
+        </StyledDiv>
+        <StyledDiv>
+          <h2>Llegué al canal:</h2>
+          <p>{arrived}</p>
+        </StyledDiv>
+        <StyledDiv>
+          <h2>Mensaje para la Muchachada:</h2>
+          <p>{message}</p>
+        </StyledDiv>
       </div>
     </ContentSection>
   )

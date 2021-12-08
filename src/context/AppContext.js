@@ -1,4 +1,5 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useReducer } from 'react'
+import { reducer } from '../Reducers/FlagReducer'
 
 const AppContext = createContext(null)
 
@@ -11,18 +12,24 @@ const AppProvider = (props) => {
     future: '',
     games: '',
     arrived: '',
-    message: '',
-    urlFlag: ''
+    message: ''
   })
 
   const defineValues = (values) => {
     setHuellitaValues(values)
   }
 
-  console.log('State', huellitaValues)
-
+  const [flagUrl, dispatch] = useReducer(reducer, { url: '' })
   return (
-    <AppContext.Provider value={{ huellitaValues, setHuellitaValues, defineValues }}>
+    <AppContext.Provider value={{
+      huellitaValues,
+      setHuellitaValues,
+      defineValues,
+
+      flagUrl,
+      dispatch
+    }}
+    >
       {props.children}
     </AppContext.Provider>
   )

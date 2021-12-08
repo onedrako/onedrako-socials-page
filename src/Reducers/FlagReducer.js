@@ -2,11 +2,10 @@ const initialUrl = { url: '' }
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'Alemania':
+      return { url: 'https://cdn-icons-png.flaticon.com/512/330/330523.png' }
     case 'Argentina':
-      return {
-        ...state,
-        url: 'https://image.flaticon.com/icons/png/512/330/330487.png'
-      }
+      return { url: 'https://image.flaticon.com/icons/png/512/330/330487.png' }
     case 'Bolivia':
       return { url: 'https://cdn-icons-png.flaticon.com/512/330/330535.png' }
     case 'Brasil':
@@ -40,7 +39,7 @@ const reducer = (state, action) => {
     case 'Venezuela':
       return { url: 'https://image.flaticon.com/icons/png/512/330/330546.png' }
     default:
-      return 'Sun URL'
+      return state
   }
 }
 

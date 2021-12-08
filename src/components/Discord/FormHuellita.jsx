@@ -1,16 +1,14 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext } from 'react'
 import * as Yup from 'yup'
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { RequiredMessage } from './RequiredMessage'
 import { AppContext } from '../../context/AppContext'
 import { StyledDivision } from '../../styles/Discord/StyledDivision'
-
-import { reducer, initialUrl } from '../../Reducers/FlagReducer'
+// import { reducer } from '../../Reducers/FlagReducer'
 
 const FormHuellita = () => {
-  const { defineValues } = useContext(AppContext)
-  const [url, dispatch] = useReducer(reducer, initialUrl)
+  const { defineValues, dispatch } = useContext(AppContext)
 
   return (
     <Formik
@@ -22,16 +20,11 @@ const FormHuellita = () => {
         future: '',
         games: '',
         arrived: '',
-        message: '',
-        urlFlag: ''
+        message: ''
       }}
       onSubmit={values => {
-        console.log('estado', url)
-
-        dispatch({ type: 'Argentina' })
-        console.log('estado', url)
         defineValues(values)
-        console.log('estado', url)
+        dispatch({ type: values.country })
       }}
       validationSchema={Yup.object().shape({
         userName: Yup.string().required(<RequiredMessage message='Por favor, menciona quien eres 😢' />),
