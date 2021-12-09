@@ -6,9 +6,10 @@ import { RequiredMessage } from './RequiredMessage'
 import { AppContext } from '../../context/AppContext'
 import { StyledDivision } from '../../styles/Discord/StyledDivision'
 import { getCapture } from '../../utils/manageCapture'
+import { scrollToDownload } from '../../utils/scrollToDownload'
 // import { reducer } from '../../Reducers/FlagReducer'
 
-const FormHuellita = ({ setVisible }) => {
+const FormHuellita = ({ setVisible, setDisabled }) => {
   const { defineValues, dispatch } = useContext(AppContext)
 
   return (
@@ -24,12 +25,15 @@ const FormHuellita = ({ setVisible }) => {
         message: ''
       }}
       onSubmit={values => {
+        setDisabled(true)
         setVisible(true)
         defineValues(values)
         dispatch({ type: values.country })
         setTimeout(() => {
           getCapture()
-        }, 500)
+          setDisabled(false)
+          scrollToDownload({ behavior: 'smooth' })
+        }, 550)
       }}
       validationSchema={Yup.object().shape({
         userName: Yup.string().required(<RequiredMessage message='Por favor, menciona quien eres 😢' />),

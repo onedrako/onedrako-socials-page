@@ -15,7 +15,6 @@ const getCapture = () => {
     const img = new Image()
     img.src = dataUrl
     img.id = 'Presentation-Img'
-    console.log(img.src)
     document.querySelector('#downloadImg').appendChild(img)
   }).catch(err => {
     console.error(err)

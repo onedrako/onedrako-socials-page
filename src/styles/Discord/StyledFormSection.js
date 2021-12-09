@@ -10,7 +10,6 @@ const StyledLi = styled.li`
 `
 
 const StyledFormSection = styled.section.attrs(props => ({
-  // ${(props.backgroundColor !== "#000000" &&  props.backgroundcolor || '#212525')},
   backgroundColor: props.backgroundColor || '#212525'
 }))`
 width: 90%;

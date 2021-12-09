@@ -9,10 +9,11 @@ import { ResultsSection } from '../components/Discord/ResultsSection'
 import { StyledFormSection, StyledP, StyledLi } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
 import { FormContainer } from '../styles/Discord/FormContainer'
-import { StyledContainerForIDownload, StyledImg } from '../styles/Discord/StyledContainerForIDownload'
+import { StyledContainerForDownload, StyledImg, StyledButton } from '../styles/Discord/StyledContainerForDownload'
 
 const DiscordHuellita = () => {
   const [visible, setVisible] = useState(false)
+  const [disabled, setDisabled] = useState(true)
 
   return (
     <FormContainer>
@@ -45,18 +46,22 @@ const DiscordHuellita = () => {
           <img src='https://image.flaticon.com/icons/png/512/3157/3157914.png' alt='Imagen Formulario' />
           <h1>Comienza a llenar aquí</h1>
         </StyledTitles>
-        <FormHuellita setVisible={setVisible} />
+        <FormHuellita setVisible={setVisible} setDisabled={setDisabled} />
       </StyledFormSection>
 
       <ResultsSection id='capture' />
 
       {visible && (
-        <StyledContainerForIDownload id='downloadImg'>
-          <label disabled onClick={() => downloadCapture()}>
+        <StyledContainerForDownload id='downloadImg' disabled={disabled}>
+          <label>
             <StyledImg src='https://cdn-icons.flaticon.com/png/512/2794/premium/2794872.png?token=exp=1639009333~hmac=fbc10bbc7304da36bbb1d415942f43f1' alt='download icon' />
-            Descargar Imagen
+            <StyledButton
+              disabled={disabled} onClick={() => { downloadCapture() }}
+              id='download-button'
+            > Descargar Imagen
+            </StyledButton>
           </label>
-        </StyledContainerForIDownload>
+        </StyledContainerForDownload>
       )}
 
     </FormContainer>
