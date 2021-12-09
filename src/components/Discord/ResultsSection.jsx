@@ -19,6 +19,7 @@ const ResultsSection = ({ id }) => {
   return (
     <StyledFormSection backgroundColor={color} id={id}>
       <ContentSection>
+        {/* {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />} */}
         {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />}
         <div>
           {userInformation &&

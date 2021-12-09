@@ -7,6 +7,7 @@ const StyledDiv = styled.div`
   grid-template-areas: "flag userName";
   border-bottom: 1px solid #ffffff;
   justify-self: center;
+  justify-content: center;
   align-items: center;
   margin: 0px;
   overflow: hidden;
