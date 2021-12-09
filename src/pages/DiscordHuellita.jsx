@@ -22,7 +22,7 @@ const DiscordHuellita = () => {
           <img src='https://image.flaticon.com/icons/png/512/2626/2626288.png' alt='Discord' />
           <h1>Canal de Discord "Dejando Huellita</h1>
         </StyledTitles>
-        <Titles title='Formulario "Dejando Huellita"' url='https://image.flaticon.com/icons/png/512/672/672634.png' />
+        <Titles title='Instrucciones Formulario "Dejando Huellita"' url='https://image.flaticon.com/icons/png/512/672/672634.png' />
         <StyledP>Hola, bienvenida/bienvenido, este espacio es para dejar tu presentación en el canal "dejando huellita" en nuestro discord.</StyledP>
         <StyledP>Cada uno de nosotros hemos llegado por diferentes circunstancias al stream, algunos se han ido con el paso del tiempo y otros llegan, espero hayan encontrado un lugar de paz como lo es para mí.</StyledP>
         <StyledP>Para dejar recuerdo y huella de que te pasaste por aqui, por si en algún momento decides huir y nunca regresar, los que quedemos podremos ver ese detalle de que estuviste por aca.</StyledP>
@@ -35,8 +35,8 @@ const DiscordHuellita = () => {
         </ol>
         <Titles title='Asi Funciona' />
         <ol>
-          <StyledLi>Tienes que llenar los campos y cuando termines oprimir el boton enviar, esto generara la imagen</StyledLi>
-          <StyledLi>Puedes descargar la imagen directamente o descargarla desde el boton que aparecera cuando esta esté generada</StyledLi>
+          <StyledLi>Tienes que llenar los campos (puedes usar texto y emojis 😄) y cuando termines tienes oprimir el "Generar presentación" enviar, esto generara la imagen</StyledLi>
+          <StyledLi>Puedes descargar la imagen directamente o descargarla desde el boton "Descargar Imagen" que aparecera cuando esta esté generada</StyledLi>
           <StyledLi>Publica la imagen en el canal "dejando huellita" del discord </StyledLi>
         </ol>
       </StyledFormSection>
