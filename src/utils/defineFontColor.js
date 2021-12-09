@@ -8,9 +8,9 @@ const defineFontColor = (colorValue) => {
   }
 
   const colorValueToConvert = `0x${colorValue.substring(1)}`
-  console.log(colorValueToConvert)
+  // console.log(colorValueToConvert)
   const colorInRGB = convertHexaToRGB(colorValueToConvert)
-  console.log(colorInRGB)
+  // console.log(colorInRGB)
 
   if ((colorInRGB.red && colorInRGB.green > 150) || (colorInRGB.green && colorInRGB.blue > 150) || (colorInRGB.red > 150 && colorInRGB.blue > 150)) {
     return '#000000'

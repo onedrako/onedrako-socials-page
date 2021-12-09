@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { downloadCapture } from '../utils/manageCapture'
 
@@ -10,17 +11,54 @@ import { StyledFormSection, StyledP, StyledLi } from '../styles/Discord/StyledFo
 import { StyledTitles } from '../styles/Discord/StyledTitles'
 import { FormContainer } from '../styles/Discord/FormContainer'
 import { StyledContainerForDownload, StyledImg, StyledButton } from '../styles/Discord/StyledContainerForDownload'
+import { LanguagesContainer, ButtonContainer, FlagImg } from '../styles/Discord/LanguagesContainer'
 
 const DiscordHuellita = () => {
   const [visible, setVisible] = useState(false)
   const [disabled, setDisabled] = useState(true)
+  const [languageSelect, setLanguageSelect] = useState('es')
+  const [t, i18n] = useTranslation('global')
 
   return (
     <FormContainer>
       <StyledFormSection>
+        <LanguagesContainer>
+          <h3>Language:</h3>
+          <ButtonContainer
+            lang={languageSelect} name='es'
+            onClick={() => {
+              i18n.changeLanguage('es')
+              setLanguageSelect('es')
+            }}
+          >
+            <FlagImg src='https://cdn-icons-png.flaticon.com/512/330/330557.png' alt='Spain Flag' />
+            ES
+          </ButtonContainer>
+          <ButtonContainer
+            lang={languageSelect} name='en'
+            onClick={() => {
+              i18n.changeLanguage('en')
+              setLanguageSelect('en')
+            }}
+          >
+            <FlagImg src='https://cdn-icons-png.flaticon.com/512/330/330425.png' alt='England Flag' />
+            EN
+          </ButtonContainer>
+          <ButtonContainer
+            lang={languageSelect} name='pt'
+            onClick={() => {
+              i18n.changeLanguage('pt')
+              setLanguageSelect('pt')
+            }}
+          >
+            <FlagImg src='https://cdn-icons-png.flaticon.com/512/330/330461.png' alt='Portugal Flag' />
+            PT
+          </ButtonContainer>
+
+        </LanguagesContainer>
         <StyledTitles>
           <img src='https://image.flaticon.com/icons/png/512/2626/2626288.png' alt='Discord' />
-          <h1>Canal de Discord "Dejando Huellita</h1>
+          <h1>{t('discord.huellitaForm.title')}</h1>
         </StyledTitles>
         <Titles title='Instrucciones Formulario "Dejando Huellita"' url='https://image.flaticon.com/icons/png/512/672/672634.png' />
         <StyledP>Hola, bienvenida/bienvenido, este espacio es para dejar tu presentación en el canal "dejando huellita" en nuestro discord.</StyledP>
