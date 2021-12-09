@@ -34,6 +34,8 @@ const reducer = (state, action) => {
       return { url: 'https://image.flaticon.com/icons/png/512/330/330497.png' }
     case 'Portugal':
       return { url: 'https://cdn-icons-png.flaticon.com/512/330/330461.png' }
+    case 'República Dominicana':
+      return { url: 'https://cdn-icons-png.flaticon.com/512/330/330638.png' }
     case 'Uruguay':
       return { url: 'https://cdn-icons-png.flaticon.com/512/330/330597.png' }
     case 'Venezuela':

@@ -8,7 +8,7 @@ import { StyledDivision } from '../../styles/Discord/StyledDivision'
 import { getCapture } from '../../utils/manageCapture'
 // import { reducer } from '../../Reducers/FlagReducer'
 
-const FormHuellita = () => {
+const FormHuellita = ({ setVisible }) => {
   const { defineValues, dispatch } = useContext(AppContext)
 
   return (
@@ -24,6 +24,7 @@ const FormHuellita = () => {
         message: ''
       }}
       onSubmit={values => {
+        setVisible(true)
         defineValues(values)
         dispatch({ type: values.country })
         setTimeout(() => {
@@ -47,6 +48,7 @@ const FormHuellita = () => {
           <label>¿De que país eres? (Sí tu pais no esta, quejate con Gabito en Sugerencias en Discord para que lo agregue)</label>
           <Field as='select' name='country'>
             <option value=''>Selecciona un pais</option>
+            <option value='Alemania'>Alemania</option>
             <option value='Argentina'>Argentina</option>
             <option value='Bolivia'>Bolivia</option>
             <option value='Brasil'>Brasil</option>
@@ -62,6 +64,7 @@ const FormHuellita = () => {
             <option value='Panamá'>Panamá</option>
             <option value='Perú'>Perú</option>
             <option value='Portugal'>Portugal</option>
+            <option value='Republica Dominicana'>Argentina</option>
             <option value='Uruguay'>Uruguay</option>
             <option value='Venezuela'>Venezuela</option>
           </Field>
