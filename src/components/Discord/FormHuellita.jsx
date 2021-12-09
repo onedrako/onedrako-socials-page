@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { RequiredMessage } from './RequiredMessage'
 import { AppContext } from '../../context/AppContext'
 import { StyledDivision } from '../../styles/Discord/StyledDivision'
+import { getCapture } from '../../utils/manageCapture'
 // import { reducer } from '../../Reducers/FlagReducer'
 
 const FormHuellita = () => {
@@ -25,6 +26,9 @@ const FormHuellita = () => {
       onSubmit={values => {
         defineValues(values)
         dispatch({ type: values.country })
+        setTimeout(() => {
+          getCapture()
+        }, 500)
       }}
       validationSchema={Yup.object().shape({
         userName: Yup.string().required(<RequiredMessage message='Por favor, menciona quien eres 😢' />),

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getCapture } from '../utils/getCapture'
+import { getCapture, downloadCapture } from '../utils/manageCapture'
 
 import { Titles } from '../components/Discord/Titles'
 import { FormHuellita } from '../components/Discord/FormHuellita'
@@ -48,7 +48,7 @@ const DiscordHuellita = () => {
       <ResultsSection id='capture' />
 
       <StyledContainerForIDownload id='downloadImg'>
-        <button onClick={() => getCapture()}>Obtener Captura</button>
+        <button onClick={() => downloadCapture()}>Descargar</button>
       </StyledContainerForIDownload>
 
     </FormContainer>

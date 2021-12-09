@@ -1,4 +1,5 @@
 import domtoimage from 'dom-to-image'
+import { saveAs } from 'file-saver'
 
 const getCapture = () => {
   const container = document.querySelector('#downloadImg')
@@ -21,4 +22,11 @@ const getCapture = () => {
   })
 }
 
-export { getCapture }
+const downloadCapture = () => {
+  domtoimage.toBlob(document.getElementById('Presentation-Img'))
+    .then(function (blob) {
+      window.saveAs(blob, 'Presentation-Img.png')
+    })
+}
+
+export { getCapture, downloadCapture }
