@@ -13,6 +13,22 @@ const LanguagesContainer = styled.div`
   border: 3px solid #fff;
   border-radius: 10px;
   padding: 0 10px ; 
+
+  @media only screen and (max-width: 762px)  {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    height: 95px;
+    padding: 5px;
+    width: 60%;
+  }
+
+  @media (max-width: 485px) {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    height: 160px;
+    padding: 10px;
+    width: 80%;
+  }
 `
 
 const ButtonContainer = styled.span.attrs(props => {
