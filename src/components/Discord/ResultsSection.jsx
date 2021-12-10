@@ -25,7 +25,8 @@ const ResultsSection = ({ id }) => {
   const splitMessage = message.split('\n')
 
   return (
-    <StyledFormSection backgroundColor={color} id={id}>
+    <StyledFormSection gridArea='image' backgroundColor={color} id={id} width='1400px'>
+
       <ContentSection>
         {country && userName && flagUrl && <ResultDivision userName={userName} country={country} urlFlag={flagUrl.url} />}
         <div>

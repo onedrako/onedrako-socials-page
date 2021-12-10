@@ -14,6 +14,7 @@ const StyledFormSection = styled.section.attrs(props => ({
 }))`
 width: 90%;
 display: grid;
+
 padding: 20px;
 background: ${props => {
   return props.backgroundColor === '#000000' ? '#212525' : props.backgroundColor
@@ -47,8 +48,9 @@ box-shadow: 0px 2px 10px rgba(100, 100, 100, 0.4);
   cursor: pointer;
 }
 
-@media (min-width: 750px) {
-  width: 650px;
+@media (min-width: 1400px) {
+  width: ${props => props.width || '650px'};
+  grid-area: ${props => props.gridArea || null};
 }
 `
 

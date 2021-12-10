@@ -10,6 +10,10 @@ const StyledContainerForDownload = styled.div.attrs(props => ({
   margin: 25px 0 20px 0;
   padding: 10px;
 
+  @media (min-width: 1400px) {
+    grid-area: ${props => props.gridArea || null};
+  }
+
   & label{
     display: flex;
     justify-content: center;

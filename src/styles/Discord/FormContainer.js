@@ -8,6 +8,9 @@ const FormContainer = styled.main`
   margin: 0 auto;
 
   @media (min-width: 1400px) {
+  grid-template-areas: 'instructions form'
+                              "image image"
+                              "download download";
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }

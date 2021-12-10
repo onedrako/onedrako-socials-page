@@ -91,7 +91,7 @@ const DiscordHuellita = () => {
       <ResultsSection id='capture' />
 
       {visible && (
-        <StyledContainerForDownload id='downloadImg' disabled={disabled}>
+        <StyledContainerForDownload gridArea='download' id='downloadImg' disabled={disabled}>
           <label>
             {/* <StyledImg src='https://cdn-icons.flaticon.com/png/512/2550/premium/2550364.png?token=exp=1639069852~hmac=81608e5b3d2a98557263a5bb99582600' alt='download icon' /> */}
             <DownloadIcon />
