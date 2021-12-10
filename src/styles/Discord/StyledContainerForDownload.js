@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { HiOutlineDownload } from 'react-icons/hi'
 
 const StyledContainerForDownload = styled.div.attrs(props => ({
 }))`
@@ -27,12 +28,6 @@ const StyledContainerForDownload = styled.div.attrs(props => ({
   }
 `
 
-const StyledImg = styled.img`
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
-`
-
 const StyledButton = styled.button`
   background-color: ${props => props.disabled ? '#000000' : '#4f4f4f'};
   border: none;
@@ -43,5 +38,11 @@ const StyledButton = styled.button`
     background-color: #44a363;
   }
 `
+const DownloadIcon = styled(HiOutlineDownload)`
+width: 50px;
+object-fit: contain;
+/* margin-right: 10px; */
+color: #1371a7;
+`
 
-export { StyledContainerForDownload, StyledImg, StyledButton }
+export { StyledContainerForDownload, StyledButton, DownloadIcon }

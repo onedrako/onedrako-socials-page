@@ -10,7 +10,7 @@ import { ResultsSection } from '../components/Discord/ResultsSection'
 import { StyledFormSection, StyledP, StyledLi } from '../styles/Discord/StyledFormSection'
 import { StyledTitles } from '../styles/Discord/StyledTitles'
 import { FormContainer } from '../styles/Discord/FormContainer'
-import { StyledContainerForDownload, StyledImg, StyledButton } from '../styles/Discord/StyledContainerForDownload'
+import { StyledContainerForDownload, StyledButton, DownloadIcon } from '../styles/Discord/StyledContainerForDownload'
 import { LanguagesContainer, ButtonContainer, FlagImg } from '../styles/Discord/LanguagesContainer'
 
 const DiscordHuellita = () => {
@@ -92,7 +92,8 @@ const DiscordHuellita = () => {
       {visible && (
         <StyledContainerForDownload id='downloadImg' disabled={disabled}>
           <label>
-            <StyledImg src='https://cdn-icons.flaticon.com/png/512/2550/premium/2550364.png?token=exp=1639069852~hmac=81608e5b3d2a98557263a5bb99582600' alt='download icon' />
+            {/* <StyledImg src='https://cdn-icons.flaticon.com/png/512/2550/premium/2550364.png?token=exp=1639069852~hmac=81608e5b3d2a98557263a5bb99582600' alt='download icon' /> */}
+            <DownloadIcon />
             <StyledButton
               disabled={disabled} onClick={() => { downloadCapture() }}
               id='download-button'
