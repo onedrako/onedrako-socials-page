@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import * as Yup from 'yup'
+import { useTranslation } from 'react-i18next'
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { RequiredMessage } from './RequiredMessage'
@@ -9,8 +10,10 @@ import { getCapture } from '../../utils/manageCapture'
 import { scrollToDownload } from '../../utils/scrollToDownload'
 // import { reducer } from '../../Reducers/FlagReducer'
 
-const FormHuellita = ({ setVisible, setDisabled }) => {
+const FormHuellita = ({ setVisible, setDisabled, language }) => {
   const { defineValues, dispatch } = useContext(AppContext)
+  const [t] = useTranslation('global')
+  console.log(language)
 
   return (
     <Formik
@@ -36,22 +39,22 @@ const FormHuellita = ({ setVisible, setDisabled }) => {
         }, 550)
       }}
       validationSchema={Yup.object().shape({
-        userName: Yup.string().required(<RequiredMessage message='Por favor, menciona quien eres 😢' />),
-        country: Yup.string().required(<RequiredMessage message='Por favor, menciona de donde eres 😢' />),
-        userInformation: Yup.string().required(<RequiredMessage message='Por favor, menciona algo sobre ti 😢' />)
+        userName: Yup.string().required(<RequiredMessage message={t('discord.huellitaForm.requiredMessage1')} />),
+        country: Yup.string().required(<RequiredMessage message={t('discord.huellitaForm.requiredMessage2')} />),
+        userInformation: Yup.string().required(<RequiredMessage message={t('discord.huellitaForm.requiredMessage3')} />)
       })}
     >
       <Form>
         <StyledDivision>
-          <label>Nombre de usuario por el que te conocen (sí usas varios nombres usa saltos de linea por cada nombre)</label>
+          <label>{t('discord.huellitaForm.input1')}</label>
           <Field as='textarea' name='userName' />
           <ErrorMessage name='userName' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>¿De que país eres? (Sí tu pais no esta, quejate con Gabito en Sugerencias en Discord para que lo agregue)</label>
+          <label>{t('discord.huellitaForm.input2')}</label>
           <Field as='select' name='country'>
-            <option value=''>Selecciona un pais</option>
+            <option value=''>{t('discord.huellitaForm.selectCountry')}</option>
             <option value='Alemania'>Alemania</option>
             <option value='Argentina'>Argentina</option>
             <option value='Bolivia'>Bolivia</option>
@@ -61,14 +64,15 @@ const FormHuellita = ({ setVisible, setDisabled }) => {
             <option value='Ecuador'>Ecuador</option>
             <option value='El Salvador'>El Salvador</option>
             <option value='España'>España</option>
-            <option value='Estados Unidos'>Estados Unidos</option>
+            {language === 'es' ? (<option value='Estados Unidos'>{t('discord.huellitaForm.USA')}</option>) : null}
             <option value='Guatemala'>Guatemala</option>
             <option value='Honduras'>Honduras</option>
             <option value='México'>México</option>
             <option value='Panamá'>Panamá</option>
             <option value='Perú'>Perú</option>
             <option value='Portugal'>Portugal</option>
-            <option value='Republica Dominicana'>Argentina</option>
+            <option value='Republica Dominicana'>Republica Dominicana</option>
+            {language === 'en' ? (<option value='United States'>{t('discord.huellitaForm.USA')}</option>) : null}
             <option value='Uruguay'>Uruguay</option>
             <option value='Venezuela'>Venezuela</option>
           </Field>
@@ -76,37 +80,37 @@ const FormHuellita = ({ setVisible, setDisabled }) => {
         </StyledDivision>
 
         <StyledDivision>
-          <label>Selecciona un color</label>
+          <label>{t('discord.huellitaForm.input3')}</label>
           <Field type='color' name='color' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>Sobre ti, ¿qué te gusta hacer?, ¿a qué te dedicas?, ¿historia?... en resumen ¿Quién eres?</label>
+          <label>{t('discord.huellitaForm.input4')}</label>
           <Field as='textarea' name='userInformation' />
           <ErrorMessage name='userInformation' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>¿Que esperas para ti?, ¿Qué quieres hacer?, ¿Sueños de vida?</label>
+          <label>{t('discord.huellitaForm.input5')}</label>
           <Field as='textarea' name='future' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>!Nuevo: ¿Qué juegas?, ¿Donde juegas? (juegos y plataformas favoritas)</label>
+          <label>{t('discord.huellitaForm.input6')}</label>
           <Field as='textarea' name='games' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>¿Como llegaste al canal?</label>
+          <label>{t('discord.huellitaForm.input7')}</label>
           <Field as='textarea' name='arrived' />
         </StyledDivision>
 
         <StyledDivision>
-          <label>Un mensaje/consejo o lo que le quieras decir a las compañeras y compañeros de la comunidad</label>
+          <label>{t('discord.huellitaForm.input8')}</label>
           <Field as='textarea' name='message' />
         </StyledDivision>
 
-        <button type='submit'>Generar Presentación </button>
+        <button type='submit'>{t('discord.huellitaForm.formButton')} </button>
 
       </Form>
     </Formik>

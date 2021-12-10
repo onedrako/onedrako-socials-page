@@ -22,6 +22,8 @@ const reducer = (state, action) => {
       return { url: 'https://image.flaticon.com/icons/png/512/330/330557.png' }
     case 'Estados Unidos':
       return { url: 'https://image.flaticon.com/icons/png/512/330/330459.png' }
+    case 'United States':
+      return { url: 'https://image.flaticon.com/icons/png/512/330/330459.png' }
     case 'Guatemala':
       return { url: 'https://image.flaticon.com/icons/png/512/330/330587.png' }
     case 'Honduras':

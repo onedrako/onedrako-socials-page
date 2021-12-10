@@ -1,7 +1,53 @@
 {
   "discord":{
     "huellitaForm":{
-      "title": "Discord Channel 'Dejando Huellita'"
+      "title": "Discord Channel 'Dejando Huellita'",
+      "instructionsTitle": "Form instructions 'Dejando Huellita'",
+
+      "motive1": "Hi and welcome, this space is to create your presentation in the channel 'Dejando huellita' in our discord.",
+      "motive2": "Each one of us have came to the stream for different circumstances, some have left and other came, i hope you find a place of peace like is for me.",
+      "motive3": "To let a memory and your footprint that you passed here, in case you decided to run away and never return, for those who stay here we can have this detail that you were here with us ",
+      
+      "considerations": "Important considerations:",
+      "consideration1": "DON´T include personal information , this is a public space, although we try to be nice, we  dont know who is watching in the other side of the screen , for that I ask you NOT to include any personal data",
+      "consideration2": "You don't have to write in all the inputs, (only user name, where you are from, and something about you are the required inputs), what you want to share is OK.",
+      "consideration3": "You are allowed to publish this form once each two years, life changes over the time and maybe it can help you as a reminder.",
+      "consideration4": "Take this form a little serious, give all a good memory ",
+
+      "works": "How it works?",
+      "work1": "You have to complete the fields (can use text and emojis 😄), and when you finish, have to click the button 'generate presentation' thats gonna generate the image you´ll need",
+      "work2": "You can download the image directly or click the button 'Download Image' thats gonna appear when you generate the image",
+      "work3": "Share this image on the discord channel 'Dejando huella'",
+
+      "formTitle": "Start completing here",
+
+      "requiredMessage1" : "Please tell us who you are 😢",
+      "requiredMessage2" : "Please tell us where you are from 😢",
+      "requiredMessage3" : "Please tell us something about you 😢",
+
+      "input1": "Username, why everyone knows you (if you use multiple names you can put them with line breaks for each) ",
+      "input2": "Where are you from?(if your country is not in the list you can go to the 'suggestions' channel on discord and let a complain to Gabito to add your country as soon as possible )",
+      
+      "selectCountry": "Select you country",
+      "USA": "United States",
+      
+      "input3": "Pick a color",
+      "input4": "About you, what do you like to do?, what do you do?, your history? ... to sum up ¿who are you?",
+      "input5": "What do you expect for you?, what do you want to do? What are you dreams in life?",
+      "input6": "!new, ¿What do you play? ¿where do you play (devices)? (favorite platforms and games)",
+      "input7": "How did you get to the channel?",
+      "input8": "A message/ advice or what you want to tell to all the mates of the community",
+
+      "formButton": "Generate presentation",
+
+      "country": "from",
+      "result1": "About me:",
+      "result2": "I want in the future:",
+      "result3": "Games:",
+      "result4": "I got to the stream",
+      "result5": "Message for the community :",
+
+      "downloadButton": "Download Image"
     }
   }
 }

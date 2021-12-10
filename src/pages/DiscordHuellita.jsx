@@ -60,31 +60,31 @@ const DiscordHuellita = () => {
           <img src='https://image.flaticon.com/icons/png/512/2626/2626288.png' alt='Discord' />
           <h1>{t('discord.huellitaForm.title')}</h1>
         </StyledTitles>
-        <Titles title='Instrucciones Formulario "Dejando Huellita"' url='https://image.flaticon.com/icons/png/512/672/672634.png' />
-        <StyledP>Hola, bienvenida/bienvenido, este espacio es para dejar tu presentación en el canal "dejando huellita" en nuestro discord.</StyledP>
-        <StyledP>Cada uno de nosotros hemos llegado por diferentes circunstancias al stream, algunos se han ido con el paso del tiempo y otros llegan, espero hayan encontrado un lugar de paz como lo es para mí.</StyledP>
-        <StyledP>Para dejar recuerdo y huella de que te pasaste por aqui, por si en algún momento decides huir y nunca regresar, los que quedemos podremos ver ese detalle de que estuviste por aca.</StyledP>
-        <Titles title='Consideraciones importantes' url='https://image.flaticon.com/icons/png/512/2534/2534888.png' />
+        <Titles title={t('discord.huellitaForm.instructionsTitle')} url='https://image.flaticon.com/icons/png/512/672/672634.png' />
+        <StyledP>{t('discord.huellitaForm.motive1')}</StyledP>
+        <StyledP>{t('discord.huellitaForm.motive2')}</StyledP>
+        <StyledP>{t('discord.huellitaForm.motive3')}</StyledP>
+        <Titles title={t('discord.huellitaForm.considerations')} url='https://image.flaticon.com/icons/png/512/2534/2534888.png' />
         <ol>
-          <StyledLi>NO incluyas información personal, esto va a un lugar PÚBLICO, aunque tratamos de ser buena gente, no sabes quién ande viendo por ahí, por lo que te pido no incluir ningún dato personal.</StyledLi>
-          <StyledLi>No estas obligada/obligado a llenar todos los espacios, (nombre de usuario, país y algo sobre ti por lo menos) lo que quieras compartir está bien.</StyledLi>
-          <StyledLi>Esto lo puedes llenar (si gustas) 1 vez cada dos años, las cosas cambian según el tiempo y que te sirva también de recordatorio para ti. </StyledLi>
-          <StyledLi>Tomalo un poco enserio, deja buen recuerdo para la muchachada.</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.consideration1')}</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.consideration2')}</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.consideration3')}</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.consideration4')}</StyledLi>
         </ol>
-        <Titles title='Asi Funciona' />
+        <Titles title={t('discord.huellitaForm.works')} />
         <ol>
-          <StyledLi>Tienes que llenar los campos (puedes usar texto y emojis 😄) y cuando termines tienes oprimir el "Generar presentación" enviar, esto generara la imagen</StyledLi>
-          <StyledLi>Puedes descargar la imagen directamente o descargarla desde el boton "Descargar Imagen" que aparecera cuando esta esté generada</StyledLi>
-          <StyledLi>Publica la imagen en el canal "dejando huellita" del discord </StyledLi>
+          <StyledLi>{t('discord.huellitaForm.work1')}</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.work2')}</StyledLi>
+          <StyledLi>{t('discord.huellitaForm.work3')} </StyledLi>
         </ol>
       </StyledFormSection>
 
       <StyledFormSection>
         <StyledTitles>
           <img src='https://image.flaticon.com/icons/png/512/3157/3157914.png' alt='Imagen Formulario' />
-          <h1>Comienza a llenar aquí</h1>
+          <h1>{t('discord.huellitaForm.formTitle')}</h1>
         </StyledTitles>
-        <FormHuellita setVisible={setVisible} setDisabled={setDisabled} />
+        <FormHuellita setVisible={setVisible} setDisabled={setDisabled} language={languageSelect} />
       </StyledFormSection>
 
       <ResultsSection id='capture' />
@@ -96,7 +96,7 @@ const DiscordHuellita = () => {
             <StyledButton
               disabled={disabled} onClick={() => { downloadCapture() }}
               id='download-button'
-            > Descargar Imagen
+            > {t('discord.huellitaForm.downloadButton')}
             </StyledButton>
           </label>
         </StyledContainerForDownload>

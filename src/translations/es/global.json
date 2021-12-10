@@ -1,7 +1,52 @@
 {
   "discord":{
     "huellitaForm":{
-      "title": "Canal de Discord 'Dejando Huellita'"
+      "title": "Canal de Discord 'Dejando Huellita'",
+      "instructionsTitle": "Instrucciones Formulario 'Dejando Huellita'",
+      
+      "motive1": "Hola, bienvenida/bienvenido, este espacio es para dejar tu presentación en el canal 'dejando huellita' en nuestro discord.",
+      "motive2": "Cada uno de nosotros hemos llegado por diferentes circunstancias al stream, algunos se han ido con el paso del tiempo y otros llegan, espero hayan encontrado un lugar de paz como lo es para mí.",
+      "motive3": "Para dejar recuerdo y huella de que te pasaste por aqui, por si en algún momento decides huir y nunca regresar, los que quedemos podremos ver ese detalle de que estuviste por aca.",
+      
+      "considerations": "Consideraciones importantes:",
+      "consideration1": "NO incluyas información personal, esto va a un lugar PÚBLICO, aunque tratamos de ser buena gente, no sabes quién ande viendo por ahí, por lo que te pido NO incluir ningún dato personal.",
+      "consideration2": "No estas obligada/obligado a llenar todos los espacios, (nombre de usuario, país y algo sobre ti por lo menos) lo que quieras compartir está bien.",
+      "consideration3": "Esto lo puedes llenar (si gustas) 1 vez cada dos años, las cosas cambian según el tiempo y que te sirva también de recordatorio para ti.",
+      "consideration4": "Tomalo un poco enserio, deja buen recuerdo para la muchachada.",
+
+      "works": "Asi Funciona",
+      "work1": "Tienes que llenar los campos (puedes usar texto y emojis 😄) y cuando termines tienes oprimir el boton 'Generar presentación', esto generara la imagen",
+      "work2": "Puedes descargar la imagen directamente o descargarla desde el boton 'Descargar Imagen' que aparecera cuando esta esté generada",
+      "work3": "Publica la imagen en el canal 'dejando huellita' del discord",
+
+      "formTitle": "Comienza a llenar aquí",
+
+      "requiredMessage1" : "Por favor, menciona quien eres 😢",
+      "requiredMessage2" : "Por favor, menciona de donde eres 😢",
+      "requiredMessage3" : "Por favor, menciona algo sobre ti 😢",
+      
+      "input1": "Nombre de usuario por el que te conocen (sí usas varios nombres usa saltos de linea por cada nombre)",
+      "input2": "¿De que país eres? (Sí tu pais no esta, quejate con Gabito en Sugerencias en Discord para que lo agregue)",
+      "selectCountry": "Selecciona un país",
+      "USA": "Estados Unidos",
+      "input3": "Selecciona un color",
+      "input4": "Sobre ti, ¿qué te gusta hacer?, ¿a qué te dedicas?, ¿historia?... en resumen ¿Quién eres?",
+      "input5": "¿Que esperas para ti?, ¿Qué quieres hacer?, ¿Sueños de vida?",
+      "input6": "!Nuevo: ¿Qué juegas?, ¿Donde juegas? (juegos y plataformas favoritas)",
+      "input7": "¿Como llegaste al stream?",
+      "input8": "Un mensaje/consejo o lo que le quieras decir a las compañeras y compañeros de la comunidad",
+
+      "formButton": "Generar presentación",
+
+      "country": "de",
+      "result1": "Sobre mi:",
+      "result2": "Espero en el futuro:",
+      "result3": "Juegazos:",
+      "result4": "Llegue al stream:",
+      "result5": "Mensaje para la muchachada:",
+
+      "downloadButton": "Descargar Imagen"
+
     }
   }
 }
