@@ -7,6 +7,7 @@ const StyledContainerForDownload = styled.div.attrs(props => ({
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  margin: 25px 0 20px 0;
   padding: 10px;
 
   & label{
@@ -21,6 +22,8 @@ const StyledContainerForDownload = styled.div.attrs(props => ({
     align-items: center;
     font-size: 1.4rem;
     border-radius: 10px;
+    margin-bottom: 25px;
+
 
     &:hover{
     background-color: #44a363;
@@ -32,7 +35,8 @@ const StyledButton = styled.button`
   background-color: ${props => props.disabled ? '#000000' : '#4f4f4f'};
   border: none;
   color : #ffffff;
-  font-size: 1.4rem;   
+  font-size: 1.4rem; 
+  margin-right: 22px; ;  
   cursor: pointer;
   &:hover{
     background-color: #44a363;

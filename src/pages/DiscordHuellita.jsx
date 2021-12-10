@@ -21,7 +21,7 @@ const DiscordHuellita = () => {
 
   return (
     <FormContainer>
-      <StyledFormSection>
+      <StyledFormSection margin='25px auto'>
         <LanguagesContainer>
           <h3>Language:</h3>
           <ButtonContainer
@@ -79,7 +79,7 @@ const DiscordHuellita = () => {
         </ol>
       </StyledFormSection>
 
-      <StyledFormSection>
+      <StyledFormSection margin='25px auto'>
         <StyledTitles>
           <img src='https://image.flaticon.com/icons/png/512/3157/3157914.png' alt='Imagen Formulario' />
           <h1>{t('discord.huellitaForm.formTitle')}</h1>

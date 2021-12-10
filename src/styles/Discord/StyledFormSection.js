@@ -15,13 +15,12 @@ const StyledFormSection = styled.section.attrs(props => ({
 width: 90%;
 display: grid;
 padding: 20px;
-margin: 20px;
 background: ${props => {
   return props.backgroundColor === '#000000' ? '#212525' : props.backgroundColor
 }};
 color : ${props => defineFontColor(props.backgroundColor)};
 border-radius: 15px;
-margin: 25px auto;
+margin: ${props => props.margin || '0px auto'};
 justify-content: center;
 align-items: center;
 box-shadow: 0px 2px 10px rgba(100, 100, 100, 0.4);
