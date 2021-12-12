@@ -36,7 +36,7 @@ const FormHuellita = ({ setVisible, setDisabled, language }) => {
           getCapture()
           setDisabled(false)
           scrollToDownload({ behavior: 'smooth' })
-        }, 550)
+        }, 800)
       }}
       validationSchema={Yup.object().shape({
         userName: Yup.string().required(<RequiredMessage message={t('discord.huellitaForm.requiredMessage1')} />),
