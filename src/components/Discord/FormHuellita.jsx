@@ -27,16 +27,20 @@ const FormHuellita = ({ setVisible, setDisabled, language }) => {
         arrived: '',
         message: ''
       }}
-      onSubmit={values => {
-        setDisabled(true)
-        setVisible(true)
-        defineValues(values)
-        dispatch({ type: values.country })
+      onSubmit={async (values) => {
+        await defineValues(values)
+        await dispatch({ type: values.country })
+
+        setTimeout(() => {
+          setDisabled(true)
+          setVisible(true)
+        }, 750)
+
         setTimeout(() => {
           getCapture()
           setDisabled(false)
           scrollToDownload({ behavior: 'smooth' })
-        }, 800)
+        }, 1000)
       }}
       validationSchema={Yup.object().shape({
         userName: Yup.string().required(<RequiredMessage message={t('discord.huellitaForm.requiredMessage1')} />),
