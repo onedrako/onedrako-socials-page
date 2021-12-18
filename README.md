@@ -7,7 +7,7 @@ It has been created because i need to put some information about the streams in 
 
 -------------------------Features---------------------------
 
-The first idea was to put the games of the week that we were going to play, but now the first feature is to add a form to all the people in discord can be able to introduce themselves for all the community. 
+The first idea was to put the games of the week that we were going to play, but now the first feature is to add a form to all the people in discord can be able to introduce themselves for all the community. For the moment only this is working https://onedrako-page.vercel.app/discord/huellita
 
 -------------------------Technologies I am using---------------------------
 I used the library React and styled Componentes to add styles, it is not necessary at all using the library React but it is a good practice to me to use it. I built this project previously using HTML, Style and JS Vanilla.
