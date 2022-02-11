@@ -18,6 +18,11 @@ const ChillComponent = () => {
       <SectionContainer title='Calendario Semanal'>
         <GameDayCard />
         <GameDayCard />
+        <GameDayCard />
+        <GameDayCard />
+        <GameDayCard />
+        <GameDayCard />
+        <GameDayCard />
       </SectionContainer>
 
       <SectionContainer title='Horarios'>

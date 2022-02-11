@@ -13,7 +13,9 @@ const GameDayCard = () => {
           <MainInfoContainer>
             <h3>Lunes 10 de febrero</h3>
             <div>
-              <SponsorIcon />
+              <span>
+                <SponsorIcon />
+              </span>
               <h3>Pitzi</h3>
             </div>
           </MainInfoContainer>
