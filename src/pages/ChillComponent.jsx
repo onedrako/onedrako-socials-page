@@ -1,32 +1,26 @@
 import React from 'react'
+import { PrincipalSection } from './PrincipalSection'
 import { SectionContainer } from '../components/Chill/sectionContainer'
 import { GameDayCard } from '../components/Chill/GameDayCard'
+import { SchedulesContainer } from '../components/Chill/SchedulesContainer'
 
 const ChillComponent = () => {
-  const [info, setInfo] = React.useState(false)
-
   return (
     <main>
-
-      <section>
-        <h1>Canal de Juegos</h1>
-        <div>
-          <button onClick={() => setInfo(!info)}>?</button>
-        </div>
-      </section>
+      <PrincipalSection />
 
       <SectionContainer title='Calendario Semanal'>
         <GameDayCard />
+        {/* <GameDayCard />
         <GameDayCard />
         <GameDayCard />
         <GameDayCard />
         <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
+        <GameDayCard /> */}
       </SectionContainer>
 
       <SectionContainer title='Horarios'>
-        <p>Prueba</p>
+        <SchedulesContainer />
       </SectionContainer>
 
       <SectionContainer title='Juegos'>

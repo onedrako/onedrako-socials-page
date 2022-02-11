@@ -79,6 +79,7 @@ const MainInfoContainer = styled.div`
         & :hover{
           animation: ${MoveTicket} 1s ;
         }
+        
       }
     }
   }
