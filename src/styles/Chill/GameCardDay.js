@@ -120,7 +120,7 @@ const ExtraInfo = styled.div`
     & img {
       display: block;
       justify-self: center;
-      width: 20%;
+      width: 30%;
       margin: 5px 0;
     }
   }

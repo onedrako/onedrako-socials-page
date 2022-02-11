@@ -14,7 +14,7 @@ const SchedulesContainer = () => {
 
       <div>
         <ScheduleCard />
-        <ScheduleCard />
+        {/* <ScheduleCard /> */}
       </div>
     </>
   )
