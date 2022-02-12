@@ -1,13 +1,10 @@
 import React from 'react'
-import { Section, AboutButton } from './../styles/Chill/PrincipalSection'
+import { Section } from './../styles/Chill/PrincipalSection'
 
-const PrincipalSection = () => {
-  const [info, setInfo] = React.useState(false)
-
+const PrincipalSection = (props) => {
   return (
     <Section>
-      <AboutButton onClick={() => setInfo(!info)}>?</AboutButton>
-
+      {props.children}
       <h1>Canal de Juegos</h1>
     </Section>
 

@@ -38,18 +38,18 @@ const CardContainer = styled.div`
   z-index: 1;
   margin-top: 20px;
   filter: grayscale(100%);
-  cursor: pointer;
   &:hover{
     filter: grayscale(0%);
     transition: all 0.5s ease-in-out;
     transform: scale(1.05);
   }
-
+  
   & img{
     border-radius: 0 30px 0 0;
     width: 100%;
     height: 120px;
     object-fit: cover;
+    cursor: pointer;
   }
 `
 
@@ -76,6 +76,7 @@ const MainInfoContainer = styled.div`
       & span{
         width: 15px;
         margin-right: 10px;
+        cursor: pointer;
         & :hover{
           animation: ${MoveTicket} 1s ;
         }
@@ -93,7 +94,7 @@ const SponsorIcon = styled(ImTicket)`
 
 const appear = keyframes`
   from {
-    transform : translateY(-40%);
+    transform : translateY(-30%);
   }
   to {
     transform : translateY(0);

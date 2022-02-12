@@ -13,9 +13,6 @@ const BackFaceContainer = styled.div`
   height: 160px;
   transform-style: preserve-3d;
   position: relative;
-  /* filter: grayscale(100%); */
-  /* filter: grayscale(${props => props.state ? 100 : 0}); */
-  /* background: #00f; */
   &:hover{
     transform: rotateY(180deg);
     transition: 1.5s;
