@@ -13,7 +13,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#171717',
-    width: '80%',
+    width: '70%',
     height: '60%'
 
   },
@@ -46,6 +46,7 @@ const GameCard = (props) => {
         contentLabel='Example Modal'
       >
         <ModalGameCard />
+
       </Modal>
 
       <FrontCard available={props.available} onClick={() => openModal()}>
@@ -56,7 +57,6 @@ const GameCard = (props) => {
         <p>Mario Kart 8</p>
         <div>
           <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-
         </div>
         <p>Click mas información</p>
         <FiMousePointer />

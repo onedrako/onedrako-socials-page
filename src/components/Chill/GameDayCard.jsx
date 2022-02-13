@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal, { subtitle } from 'react-modal'
+import Modal from 'react-modal'
 import { ModalSponsor } from './ModalSponsor'
 
 import { GameDayCardContainer, CardContainer, MainInfoContainer, SponsorIcon, ExtraInfo } from '../../styles/Chill/GameCardDay'
@@ -36,15 +36,10 @@ const GameDayCard = () => {
     setSponsorModal(!sponsorModal)
   }
 
-  const afterOpenModal = () => {
-    subtitle.style.color = '#f00'
-  }
-
   return (
     <>
       <Modal
         isOpen={sponsorModal}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         appElement={document.getElementById('root')}

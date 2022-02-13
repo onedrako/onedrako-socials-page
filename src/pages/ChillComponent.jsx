@@ -66,12 +66,12 @@ const ChillComponent = () => {
 
       <SectionContainer title='Calendario Semanal'>
         <GameDayCard />
-        {/* <GameDayCard />
         <GameDayCard />
         <GameDayCard />
         <GameDayCard />
         <GameDayCard />
-        <GameDayCard /> */}
+        <GameDayCard />
+        <GameDayCard />
       </SectionContainer>
 
       <SectionContainer title='Horarios'>
@@ -86,12 +86,23 @@ const ChillComponent = () => {
           <GameCard available />
           <GameCard available />
           <GameCard available />
+          <GameCard available />
+          <GameCard available />
+          <GameCard available />
+          <GameCard available />
 
         </GameCardContainer>
 
         <h3>No disponibles por el momento pero que hemos jugado</h3>
         <GameCardContainer>
           <GameCard available={false} />
+          <GameCard available={false} />
+          <GameCard available={false} />
+          <GameCard available={false} />
+          <GameCard available={false} />
+          <GameCard available={false} />
+          <GameCard available={false} />
+
         </GameCardContainer>
 
       </SectionContainer>
