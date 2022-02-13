@@ -42,6 +42,12 @@ const LeftArrow = styled(BsFillArrowLeftCircleFill)`
   height: 20px;
   top: 35%;
   left: 10px;
+  @media (min-width: 500px) {
+    width: 40px;
+    height: 40px;
+    top: 45%;
+    left: 10px;
+  }
 
 `
 const RightArrow = styled(BsFillArrowRightCircleFill)`
@@ -51,6 +57,11 @@ const RightArrow = styled(BsFillArrowRightCircleFill)`
   height: 20px;
   top: 35%;
   right: 10px;
+  @media (min-width: 500px) {
+    width: 40px;
+    height: 40px;
+    top: 45%;
+  }
 `
 
 const GameImageSection = styled.div`
@@ -61,7 +72,12 @@ const GameImageSection = styled.div`
     margin-top : 20px;
     width: 75%;
     object-fit: cover;
+    @media (min-width: 500px) {
+      width: 190px;
+      height: 270px;
   }
+
+
 `
 
 const PlatformSection = styled.div`
@@ -71,12 +87,25 @@ const PlatformSection = styled.div`
   justify-content: center;
   & div{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
+    @media (min-width: 500px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 600px;
+      margin: 0 auto;
+    }
   }
   & img{
     width: 50px;
     margin: 0 auto;
+    @media (min-width: 800px) {
+      width: 70px;
+    @media (min-width: 1200px) {
+      width: 100px;
+    }
   }
 `
 

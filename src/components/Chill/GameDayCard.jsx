@@ -75,7 +75,7 @@ const GameDayCard = () => {
             <p>Inicia: 19:30</p>
             <p>Termina: 21:30</p>
 
-            </ExtraInfo>
+            </ExtraInfo> //eslint-disable-line
 
           : null}
 

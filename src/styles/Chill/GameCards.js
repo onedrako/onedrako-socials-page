@@ -5,6 +5,18 @@ const StyledGameCardContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   margin-bottom: 30px;
+  @media (min-width: 450px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 570px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (min-width: 740px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (min-width: 920px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `
 
 const BackFaceContainer = styled.div`
@@ -13,9 +25,21 @@ const BackFaceContainer = styled.div`
   height: 160px;
   transform-style: preserve-3d;
   position: relative;
+  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 20px;
   &:hover{
     transform: rotateY(180deg);
     transition: 1.5s;
+  }
+  @media (min-width: 1200px) {
+    width: 140px;
+    height: 190px;
+  }
+  @media (min-width: 1400px) {
+    width: 170px;
+    height: 240px;
   }
 `
 
@@ -25,6 +49,14 @@ const Face = styled.div`
   border-radius: 20px;
   position: absolute;
   backface-visibility: hidden;
+  @media (min-width: 1200px) {
+    width: 140px;
+    height: 190px;
+  }
+    @media (min-width: 1400px) {
+    width: 170px;
+    height: 240px;
+  }
 `
 
 const FrontCard = styled(Face)`

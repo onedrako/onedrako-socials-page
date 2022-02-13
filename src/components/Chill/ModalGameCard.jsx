@@ -26,6 +26,9 @@ const ModalGameCard = () => {
       <h3>Dias que se jugara esta semana</h3>
       <div>
         <p>Lunes</p>
+        <p>Lunes</p>
+        <p>Lunes</p>
+
       </div>
       <h3>Patrocinadores</h3>
       <p>Aun no hay patrocinadores para este juego esta re disponible para pagarlo</p>

@@ -10,6 +10,7 @@ import { GameCard } from '../components/Chill/GameCard'
 import { ModalInfo } from '../components/Chill/ModalInfo'
 
 import { AboutButton } from './../styles/Chill/PrincipalSection'
+import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
 
 const customStyles = {
   content: {
@@ -65,13 +66,15 @@ const ChillComponent = () => {
       </Modal>
 
       <SectionContainer title='Calendario Semanal'>
-        <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
-        <GameDayCard />
+        <GameSchedulesContainer>
+          <GameDayCard />
+          <GameDayCard />
+          <GameDayCard />
+          <GameDayCard />
+          <GameDayCard />
+          <GameDayCard />
+          <GameDayCard />
+        </GameSchedulesContainer>
       </SectionContainer>
 
       <SectionContainer title='Horarios'>

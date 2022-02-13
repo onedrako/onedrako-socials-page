@@ -10,6 +10,11 @@ const Section = styled.section`
   & h2{
     margin-bottom: 20px;
   }
+  @media (min-width: 1100px) {
+    max-width: 1200px;
+    padding: 50px;
+    margin: 0 auto;
+  }
 `
 
 export { Section }

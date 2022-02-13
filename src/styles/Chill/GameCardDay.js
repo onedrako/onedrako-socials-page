@@ -20,6 +20,16 @@ const MoveTicket = keyframes`
     transform: rotate(0deg);
   }
 `
+const GameSchedulesContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: 840px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+    }
+  `
 
 const GameDayCardContainer = styled.div`
   display: flex;
@@ -32,12 +42,17 @@ const GameDayCardContainer = styled.div`
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  place-items: center;
   width: 80%;
   margin: 0 auto;
   position: relative;
   z-index: 1;
   margin-top: 20px;
   filter: grayscale(100%);
+  -webkit-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 0 30px 0 0;
   &:hover{
     filter: grayscale(0%);
     transition: all 0.5s ease-in-out;
@@ -50,6 +65,17 @@ const CardContainer = styled.div`
     height: 120px;
     object-fit: cover;
     cursor: pointer;
+    @media (min-width: 425px) {
+      height: 135px;
+    }
+    @media (min-width: 550px) {
+      height: 150px;
+      max-width: 400px
+    }
+    /* @media (min-width: 1000px) {
+      height: 200px;
+      max-width: 500px
+    } */
   }
 `
 
@@ -68,6 +94,12 @@ const MainInfoContainer = styled.div`
     /* pointer-events:none; */
     /* &:not(div > svg):hover{
       pointer-events: none;
+    } */
+    @media (min-width: 550px) {
+      max-width: 400px
+    }
+    /* @media (min-width: 1000px) {
+      max-width: 500px
     } */
     & div {
       display: flex;
@@ -111,6 +143,12 @@ const ExtraInfo = styled.div`
   text-align: center;
   border-radius: 0 0 30px 30px;
   animation: ${appear} 1s ease-in-out;
+  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  @media (min-width: 550px) {
+    max-width: 400px
+    }
   & div {
     display: grid;
     justify-content: center;
@@ -127,6 +165,9 @@ const ExtraInfo = styled.div`
   }
   & p {
     font-size: 1rem;
+    @media (min-width: 550px) {
+      font-size: 1.2rem;
+    }
   }
 `
 
@@ -141,6 +182,8 @@ const ExtraInfo = styled.div`
 // `
 
 export {
+  GameSchedulesContainer,
+
   GameDayCardContainer,
   CardContainer,
   MainInfoContainer,
