@@ -1,8 +1,11 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { ModalSponsor } from './ModalSponsor'
+import { PlatformsDiv } from './platformsDiv'
 
 import { GameDayCardContainer, CardContainer, MainInfoContainer, SponsorIcon, ExtraInfo } from '../../styles/Chill/GameCardDay'
+
+import { defineStatus } from '../../utils/defineStatus'
 
 const customStyles = {
   content: {
@@ -24,7 +27,7 @@ const customStyles = {
   }
 }
 
-const GameDayCard = () => {
+const GameDayCard = ({ gameDay }) => {
   const [extraInfo, setExtraInfo] = React.useState(false)
   const [sponsorModal, setSponsorModal] = React.useState(false)
 
@@ -35,6 +38,14 @@ const GameDayCard = () => {
   const openModal = () => {
     setSponsorModal(!sponsorModal)
   }
+
+  console.log(gameDay)
+
+  const date = new Date(gameDay.date)
+  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
+  const result = date.toLocaleDateString('es-ES', options)
+
+  const status = defineStatus(gameDay.state, gameDay.date)
 
   return (
     <>
@@ -49,29 +60,32 @@ const GameDayCard = () => {
       </Modal>
 
       <GameDayCardContainer>
-        <CardContainer>
-          <img onClick={() => setExtraInfo(!extraInfo)} src='https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/wiiu_14/SI_WiiU_MarioKart8_image1600w.jpg' />
+        <CardContainer status={status}>
+          <img onClick={() => setExtraInfo(!extraInfo)} src={gameDay.game.largeImage} alt={`Imagen de ${gameDay.game.name}`} />
           <MainInfoContainer>
-            <h3>Lunes 10 de febrero</h3>
+            <h3>{result}</h3>
             <div>
               <span onClick={() => openModal()}>
-                <SponsorIcon />
+                <SponsorIcon sponsor={gameDay.sponsor} />
               </span>
-              <h3>Pitzi</h3>
+              {gameDay.sponsor ? <h3>{gameDay.sponsor}</h3> : <h3>---</h3>}
             </div>
           </MainInfoContainer>
         </CardContainer>
 
         {extraInfo
           ? <ExtraInfo>
-            <h2>Mario Kart 8</h2>
-            <p>Jugando desde que salio este hermoso juego, en este si me defiendo</p>
+            <h2>{gameDay.game.name}</h2>
+            <p>{gameDay.game.description}</p>
 
             <div>
-              <p>Plataformas: </p>
-              <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
+              <h3>Plataformas: </h3>
+              {gameDay.game.platforms.map((platform, index) => (
+                <PlatformsDiv key={index} img={platform.img} name={platform.name} />
+              ))}
             </div>
 
+            <h3>Horario: </h3>
             <p>Inicia: 19:30</p>
             <p>Termina: 21:30</p>
 

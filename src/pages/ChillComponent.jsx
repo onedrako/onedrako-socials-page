@@ -12,6 +12,8 @@ import { ModalInfo } from '../components/Chill/ModalInfo'
 import { AboutButton } from './../styles/Chill/PrincipalSection'
 import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
 
+import { gameDayData } from './../../dataExample/gameDayData'
+
 const customStyles = {
   content: {
     top: '50%',
@@ -48,6 +50,12 @@ const ChillComponent = () => {
   //   subtitle.style.color = '#f00'
   // }
 
+  const orderByDate = () => {
+    return gameDayData.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date)
+    })
+  }
+
   return (
     <main>
       <PrincipalSection>
@@ -67,13 +75,9 @@ const ChillComponent = () => {
 
       <SectionContainer title='Calendario Semanal'>
         <GameSchedulesContainer>
-          <GameDayCard />
-          <GameDayCard />
-          <GameDayCard />
-          <GameDayCard />
-          <GameDayCard />
-          <GameDayCard />
-          <GameDayCard />
+          {orderByDate().map((gameDay, index) => (
+            <GameDayCard gameDay={gameDay} key={gameDay.id} />
+          ))}
         </GameSchedulesContainer>
       </SectionContainer>
 

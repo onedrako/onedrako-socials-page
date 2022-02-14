@@ -48,11 +48,14 @@ const CardContainer = styled.div`
   position: relative;
   z-index: 1;
   margin-top: 20px;
-  filter: grayscale(100%);
+  filter: grayscale(${props => props.status});
   -webkit-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
   border-radius: 0 30px 0 0;
+  @media (min-width: 550px) {
+      max-width: 400px
+    }
   &:hover{
     filter: grayscale(0%);
     transition: all 0.5s ease-in-out;
@@ -109,6 +112,12 @@ const MainInfoContainer = styled.div`
         width: 15px;
         margin-right: 10px;
         cursor: pointer;
+        @media (min-width: 550px) {
+          width: 25px;
+          & svg{
+            font-size: 1.5rem;
+          }
+        }
         & :hover{
           animation: ${MoveTicket} 1s ;
         }
@@ -119,6 +128,7 @@ const MainInfoContainer = styled.div`
   `
 
 const SponsorIcon = styled(ImTicket)`
+    filter: grayscale(${props => props.sponsor});
   margin-right: 5px;
   color: #d8b100;
   font-size: 1.2rem;
@@ -126,7 +136,7 @@ const SponsorIcon = styled(ImTicket)`
 
 const appear = keyframes`
   from {
-    transform : translateY(-30%);
+    transform : translateY(-120px);
   }
   to {
     transform : translateY(0);
@@ -149,7 +159,7 @@ const ExtraInfo = styled.div`
   @media (min-width: 550px) {
     max-width: 400px
     }
-  & div {
+  /* & div {
     display: grid;
     justify-content: center;
     align-items: center;
@@ -162,12 +172,28 @@ const ExtraInfo = styled.div`
       width: 30%;
       margin: 5px 0;
     }
-  }
+  } */
   & p {
     font-size: 1rem;
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 5px;
     @media (min-width: 550px) {
       font-size: 1.2rem;
     }
+  }
+`
+
+const PlatformsStyledDiv = styled.div`
+  display: flex;
+  justify-content: space-around; 
+  align-items: center;
+  margin-top: 15px;
+  background-color: #2b2e2e;
+  border-radius: 30px;
+  & img{
+      width: 30%;
+      margin: 5px 0;;
   }
 `
 
@@ -189,6 +215,8 @@ export {
   MainInfoContainer,
   SponsorIcon,
   // NotAvailable,
+
+  PlatformsStyledDiv,
 
   ExtraInfo
 }
