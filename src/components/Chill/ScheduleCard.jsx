@@ -1,21 +1,12 @@
 import React from 'react'
 import { FlagsContainer, ScheduleCardContainer, SchedulesPerCountry } from '../../styles/Chill/ScheduleCard'
 
-const ScheduleCard = () => {
+const ScheduleCard = (props) => {
   return (
     <>
       <ScheduleCardContainer>
         <FlagsContainer>
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
-          <img src='https://cdn-icons-png.flaticon.com/512/330/330433.png' alt='' />
+          {props.children}
         </FlagsContainer>
         <SchedulesPerCountry>
           <p>Inicio: 19:30</p>

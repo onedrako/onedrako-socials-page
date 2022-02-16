@@ -39,13 +39,17 @@ const GameDayCard = ({ gameDay }) => {
     setSponsorModal(!sponsorModal)
   }
 
-  console.log(gameDay)
-
   const date = new Date(gameDay.date)
   const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
   const result = date.toLocaleDateString('es-ES', options)
 
   const status = defineStatus(gameDay.state, gameDay.date)
+
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+  const initialStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
+  const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
+  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
+  const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
 
   return (
     <>
@@ -79,15 +83,15 @@ const GameDayCard = ({ gameDay }) => {
             <p>{gameDay.game.description}</p>
 
             <div>
-              <h3>Plataformas: </h3>
+              <h3>Plataformas donde juego: </h3>
               {gameDay.game.platforms.map((platform, index) => (
                 <PlatformsDiv key={index} img={platform.img} name={platform.name} />
               ))}
             </div>
 
             <h3>Horario: </h3>
-            <p>Inicia: 19:30</p>
-            <p>Termina: 21:30</p>
+            <p>Inicia: {initialTimeForUserCountry} </p>
+            <p>Termina: {endTimeForUserCountry}</p>
 
             </ExtraInfo> //eslint-disable-line
 

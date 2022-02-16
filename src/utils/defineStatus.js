@@ -3,8 +3,6 @@ const defineStatus = (status, date) => {
   const gameDay = new Date(date)
   const dateToCompare = gameDay.setHours(gameDay.getHours() + 24)
 
-  console.log(status)
-
   if (status === false) {
     return status
   }

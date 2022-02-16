@@ -191,9 +191,11 @@ const PlatformsStyledDiv = styled.div`
   margin-top: 15px;
   background-color: #2b2e2e;
   border-radius: 30px;
+  height: 50px;
   & img{
-      width: 30%;
-      margin: 5px 0;;
+      height: 70%;
+      margin: 5px 0;
+      object-fit: cover;
   }
 `
 

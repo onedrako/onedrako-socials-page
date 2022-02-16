@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Modal from 'react-modal'
+import axios from 'axios'
 
 import { PrincipalSection } from './PrincipalSection'
 import { SectionContainer } from '../components/Chill/sectionContainer'
@@ -8,11 +9,15 @@ import { SchedulesContainer } from '../components/Chill/SchedulesContainer'
 import { GameCardContainer } from '../components/Chill/GameCardContainer'
 import { GameCard } from '../components/Chill/GameCard'
 import { ModalInfo } from '../components/Chill/ModalInfo'
+import { ScheduleCard } from '../components/Chill/ScheduleCard'
 
 import { AboutButton } from './../styles/Chill/PrincipalSection'
 import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
 
 import { gameDayData } from './../../dataExample/gameDayData'
+
+import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
+const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
 
 const customStyles = {
   content: {
@@ -35,8 +40,8 @@ const customStyles = {
 }
 
 const ChillComponent = () => {
-  // let subtitle
   const [infoModal, setInfoModal] = React.useState(false)
+  const [scheduleInfo, setScheduleInfo] = React.useState([])
 
   const closeModal = () => {
     setInfoModal(!infoModal)
@@ -46,15 +51,17 @@ const ChillComponent = () => {
     setInfoModal(!infoModal)
   }
 
-  // const afterOpenModal = () => {
-  //   subtitle.style.color = '#f00'
-  // }
-
   const orderByDate = () => {
     return gameDayData.sort((a, b) => {
       return new Date(a.date) - new Date(b.date)
     })
   }
+
+  useEffect(async () => {
+    const response = await axios(schedulesAPI)
+    setScheduleInfo(response.data)
+    console.log(response.data)
+  }, [])
 
   return (
     <main>
@@ -76,13 +83,17 @@ const ChillComponent = () => {
       <SectionContainer title='Calendario Semanal'>
         <GameSchedulesContainer>
           {orderByDate().map((gameDay, index) => (
-            <GameDayCard gameDay={gameDay} key={gameDay.id} />
+            <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} />
           ))}
         </GameSchedulesContainer>
       </SectionContainer>
 
-      <SectionContainer title='Horarios'>
-        <SchedulesContainer />
+      <SectionContainer title='Horario regular'>
+        <SchedulesContainer flagsInfo={scheduleInfo.countries}>
+          {/* {scheduleInfo.countries.map((country, index) =>
+            console.log(country)
+          )} */}
+        </SchedulesContainer>
       </SectionContainer>
 
       <SectionContainer title='Juegos y Eventos'>
