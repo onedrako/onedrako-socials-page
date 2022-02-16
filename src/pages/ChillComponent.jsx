@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Modal from 'react-modal'
 import axios from 'axios'
+import Countdown from 'react-countdown'
 
 import { PrincipalSection } from './PrincipalSection'
 import { SectionContainer } from '../components/Chill/sectionContainer'
@@ -9,14 +10,16 @@ import { SchedulesContainer } from '../components/Chill/SchedulesContainer'
 import { GameCardContainer } from '../components/Chill/GameCardContainer'
 import { GameCard } from '../components/Chill/GameCard'
 import { ModalInfo } from '../components/Chill/ModalInfo'
-import { ScheduleCard } from '../components/Chill/ScheduleCard'
 
 import { AboutButton } from './../styles/Chill/PrincipalSection'
 import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
+import { NextStreamDiv } from '../styles/Chill/ScheduleSection'
 
 import { gameDayData } from './../../dataExample/gameDayData'
 
 import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
+import { defineToday } from '../utils/defineToday'
+
 const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
 
 const customStyles = {
@@ -59,9 +62,15 @@ const ChillComponent = () => {
 
   useEffect(async () => {
     const response = await axios(schedulesAPI)
-    setScheduleInfo(response.data)
+    setScheduleInfo(await response.data)
     console.log(response.data)
   }, [])
+
+  const today = defineToday(gameDayData)
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+  const initialStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`)
+  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
+  const dateToCountDown = new Date(`${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`)
 
   return (
     <main>
@@ -80,6 +89,13 @@ const ChillComponent = () => {
         <ModalInfo />
       </Modal>
 
+      <SectionContainer>
+        <NextStreamDiv>
+          <h2>Siguiente Stream en:</h2>
+          <Countdown date={dateToCountDown} />
+        </NextStreamDiv>
+      </SectionContainer>
+
       <SectionContainer title='Calendario Semanal'>
         <GameSchedulesContainer>
           {orderByDate().map((gameDay, index) => (
@@ -89,11 +105,7 @@ const ChillComponent = () => {
       </SectionContainer>
 
       <SectionContainer title='Horario regular'>
-        <SchedulesContainer flagsInfo={scheduleInfo.countries}>
-          {/* {scheduleInfo.countries.map((country, index) =>
-            console.log(country)
-          )} */}
-        </SchedulesContainer>
+        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} />
       </SectionContainer>
 
       <SectionContainer title='Juegos y Eventos'>
