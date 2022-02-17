@@ -84,11 +84,18 @@ const ChillComponent = () => {
 
     if (selectedGame[0]) {
       setModalGameCardInfo(selectedGame[0])
-    } else {
+    } else if (pattern === 'next') {
       while (!gamesInfo.filter(game => game.id === gameModalId)[0]) {
-        console.log('1', gamesInfo.filter(game => game.id === gameModalId)[0])
         gameModalId++
-        console.log('2', gamesInfo.filter(game => game.id === gameModalId)[0])
+        if (gamesInfo.filter(game => game.id === gameModalId)[0]) {
+          selectedGame = gamesInfo.filter(game => game.id === gameModalId)
+          setModalGameCardInfo(selectedGame[0])
+          return
+        }
+      }
+    } else if (pattern === 'previous') {
+      while (!gamesInfo.filter(game => game.id === gameModalId)[0]) {
+        gameModalId--
         if (gamesInfo.filter(game => game.id === gameModalId)[0]) {
           selectedGame = gamesInfo.filter(game => game.id === gameModalId)
           setModalGameCardInfo(selectedGame[0])
