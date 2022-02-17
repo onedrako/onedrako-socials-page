@@ -8,7 +8,6 @@ const today = new Date(Date.now())
 
 const defineToday = (days) => {
   const actualDay = getDayAndMonth(today)
-  console.log(actualDay)
 
   return days.filter(gameDay => {
     const { date } = gameDay
@@ -18,7 +17,5 @@ const defineToday = (days) => {
   }
   )
 }
-
-// console.log(defineToday(gameDayData))
 
 export { defineToday }

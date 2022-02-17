@@ -50,11 +50,11 @@ const GameCard = (props) => {
       </Modal>
 
       <FrontCard available={props.available} onClick={() => openModal()}>
-        <img src='https://upload.wikimedia.org/wikipedia/en/b/b5/MarioKart8Boxart.jpg' />
+        <img src={props.boxImage} />
       </FrontCard>
 
       <BackCard onClick={() => openModal()}>
-        <p>Mario Kart 8</p>
+        <p>{props.name}</p>
         <div>
           <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
         </div>

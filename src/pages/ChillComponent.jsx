@@ -21,6 +21,7 @@ import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
 import { defineToday } from '../utils/defineToday'
 
 const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
+const gamesAPI = 'http://localhost:3000/api/v1/games'
 
 const customStyles = {
   content: {
@@ -45,6 +46,7 @@ const customStyles = {
 const ChillComponent = () => {
   const [infoModal, setInfoModal] = React.useState(false)
   const [scheduleInfo, setScheduleInfo] = React.useState([])
+  const [gamesInfo, setGamesInfo] = React.useState([])
 
   const closeModal = () => {
     setInfoModal(!infoModal)
@@ -63,7 +65,11 @@ const ChillComponent = () => {
   useEffect(async () => {
     const response = await axios(schedulesAPI)
     setScheduleInfo(await response.data)
-    console.log(response.data)
+  }, [])
+
+  useEffect(async () => {
+    const response = await axios(gamesAPI)
+    setGamesInfo(await response.data)
   }, [])
 
   const today = defineToday(gameDayData)
@@ -74,6 +80,12 @@ const ChillComponent = () => {
 
   const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
   const dateToCountDown = new Date(`${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`)
+
+  console.log(gamesInfo)
+  // if (gamesInfo) {
+  //   setAvailableGames(gamesInfo.filter(game => game.available === true))
+  //   setUnavailableGames(gamesInfo.filter(game => game.available === false))
+  // }
 
   return (
     <main>
@@ -99,6 +111,10 @@ const ChillComponent = () => {
         </NextStreamDiv>
       </SectionContainer>
 
+      <SectionContainer title='Horario del siguiente stream'>
+        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={initialStreamSchedule} endTime={endStreamSchedule} />
+      </SectionContainer>
+
       <SectionContainer title='Calendario Semanal'>
         <GameSchedulesContainer>
           {orderByDate().map((gameDay, index) => (
@@ -107,34 +123,17 @@ const ChillComponent = () => {
         </GameSchedulesContainer>
       </SectionContainer>
 
-      <SectionContainer title='Horario regular'>
-        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={initialStreamSchedule} endTime={endStreamSchedule} />
-      </SectionContainer>
-
       <SectionContainer title='Juegos y Eventos'>
         <h3>Disponibles</h3>
         <GameCardContainer>
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-          <GameCard available />
-
+          {gamesInfo && gamesInfo.filter(game => game.available === true).map(game =>
+            <GameCard key={game.id} available={game.available} name={game.name} boxImage={game.boxImage} />)}
         </GameCardContainer>
 
         <h3>No disponibles por el momento pero que hemos jugado</h3>
         <GameCardContainer>
-          <GameCard available={false} />
-          <GameCard available={false} />
-          <GameCard available={false} />
-          <GameCard available={false} />
-          <GameCard available={false} />
-          <GameCard available={false} />
-          <GameCard available={false} />
+          {gamesInfo && gamesInfo.filter(game => game.available === false).map(game =>
+            <GameCard key={game.id} available={game.available} name={game.name} boxImage={game.boxImage} />)}
 
         </GameCardContainer>
 
