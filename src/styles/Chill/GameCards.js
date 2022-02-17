@@ -25,6 +25,7 @@ const BackFaceContainer = styled.div`
   height: 160px;
   transform-style: preserve-3d;
   position: relative;
+  cursor: pointer;
   -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
   -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
   box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
@@ -77,14 +78,18 @@ const BackCard = styled(Face)`
   transition: 3s;
   transform: rotateY(180deg);
   padding: 10px;
-  text-align: center;  
+  text-align: center;
+  overflow: hidden;
   & img{
-    width: 45%;
+    width: 35%;
+    height: 35%;
+    object-fit: cover;
+    margin: 5px;
+  }
   }
   & > *{
     margin-bottom: 5px;
   }
-}
 `
 
 export { BackFaceContainer, FrontCard, BackCard, StyledGameCardContainer }

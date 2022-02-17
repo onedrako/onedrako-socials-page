@@ -35,6 +35,12 @@ const GameCard = (props) => {
     setGameCardModal(!GameCardModal)
   }
 
+  const data = props.data
+
+  if (!data) {
+    return null
+  }
+
   return (
     <BackFaceContainer>
 
@@ -49,14 +55,16 @@ const GameCard = (props) => {
 
       </Modal>
 
-      <FrontCard available={props.available} onClick={() => openModal()}>
-        <img src={props.boxImage} />
+      <FrontCard available={data.available} onClick={() => openModal()}>
+        <img src={data.boxImage} />
       </FrontCard>
 
       <BackCard onClick={() => openModal()}>
-        <p>{props.name}</p>
+        <p>{data.name}</p>
         <div>
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
+          {data.platforms.map(platform => (
+            <img src={platform.img} key={platform.id} />
+          ))}
         </div>
         <p>Click mas información</p>
         <FiMousePointer />

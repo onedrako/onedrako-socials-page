@@ -68,8 +68,12 @@ const ChillComponent = () => {
   }, [])
 
   useEffect(async () => {
-    const response = await axios(gamesAPI)
-    setGamesInfo(await response.data)
+    try {
+      const response = await axios(gamesAPI)
+      setGamesInfo(response.data)
+    } catch (err) {
+      console.log(err)
+    }
   }, [])
 
   const today = defineToday(gameDayData)
@@ -126,14 +130,18 @@ const ChillComponent = () => {
       <SectionContainer title='Juegos y Eventos'>
         <h3>Disponibles</h3>
         <GameCardContainer>
-          {gamesInfo && gamesInfo.filter(game => game.available === true).map(game =>
-            <GameCard key={game.id} available={game.available} name={game.name} boxImage={game.boxImage} />)}
+          {!gamesInfo
+            ? null
+            : gamesInfo.filter(game => game.available === true).map(game =>
+              <GameCard key={game.id} data={game} />)}
         </GameCardContainer>
 
         <h3>No disponibles por el momento pero que hemos jugado</h3>
         <GameCardContainer>
-          {gamesInfo && gamesInfo.filter(game => game.available === false).map(game =>
-            <GameCard key={game.id} available={game.available} name={game.name} boxImage={game.boxImage} />)}
+          {!gamesInfo
+            ? null
+            : gamesInfo.filter(game => game.available === false).map(game =>
+              <GameCard key={game.id} data={game} />)}
 
         </GameCardContainer>
 
