@@ -63,11 +63,33 @@ const ChillComponent = () => {
     })
   }
 
-  const pushInfoToCardModal = (id) => {
-    const selectedGame = gamesInfo.filter(game => game.id === id)
-    console.log(selectedGame[0])
+  const pushInfoToCardModal = (id, pattern) => {
+    let gameModalId
+    const breakLoop = false
+
+    const orderGames = gamesInfo.sort((a, b) => {
+      return a.id - b.id
+    })
+    const min = orderGames[0].id
+    const max = orderGames[orderGames.length - 1].id
+
+    if (id < min) {
+      gameModalId = max
+    } else if (id > max) {
+      gameModalId = min
+    } else {
+      gameModalId = id
+    }
+
+    console.log(gamesInfo[gameModalId - 1])
+
+    if (gamesInfo[gameModalId] === undefined) {
+      gameModalId++
+    }
+
+    const selectedGame = gamesInfo.filter(game => game.id === gameModalId)
+
     setModalGameCardInfo(selectedGame[0])
-    console.log(modalGameCardInfo)
   }
 
   useEffect(async () => {

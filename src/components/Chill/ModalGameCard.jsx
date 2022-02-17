@@ -1,7 +1,7 @@
 import React from 'react'
 import { ModalStructure, LeftArrow, RightArrow, GameImageSection, PlatformSection } from '../../styles/Chill/Modal'
 
-const ModalGameCard = ({ info }) => {
+const ModalGameCard = ({ info, pushInfo }) => {
   const formatDate = (dateToConvert) => {
     const date = new Date(dateToConvert)
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
@@ -11,11 +11,15 @@ const ModalGameCard = ({ info }) => {
   return (
     <ModalStructure>
       <h2>{info.name}</h2>
+
       <GameImageSection>
         <img src={info.boxImage} alt={info.name} />
-        <LeftArrow />
-        <RightArrow />
+
+        <LeftArrow onClick={() => pushInfo(info.id - 1, 'previous')} />
+        <RightArrow onClick={() => pushInfo(info.id + 1, 'next')} />
+
       </GameImageSection>
+
       <h3>¿Que hacemos en este juego?</h3>
       <p>{info.description}</p>
       <PlatformSection>

@@ -51,7 +51,7 @@ const GameCard = (props) => {
         appElement={document.getElementById('root')}
         contentLabel='Example Modal'
       >
-        <ModalGameCard info={props.modalInfo} />
+        <ModalGameCard info={props.modalInfo} pushInfo={props.pushInfo} />
 
       </Modal>
 

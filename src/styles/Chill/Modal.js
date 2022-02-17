@@ -11,6 +11,7 @@ const ModalStructure = styled.div`
   & h2{
     text-align: center;
     margin-bottom: 10px;
+    
   }
   & h3{
     text-align: center;
@@ -18,6 +19,14 @@ const ModalStructure = styled.div`
   }
   & p{
     margin-bottom: 10px;
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  & li{
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 5px;
   }
 
 
@@ -83,14 +92,23 @@ const PlatformSection = styled.div`
   gap: 10px;
   width: 100%;
   justify-content: center;
+  & li{
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 5px;
+  }
   & div{
     display: grid;
-    width: 100%;
+    width: 200px;
     grid-template-columns: 60% 40%;
     justify-content: center;
     align-items: center;
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 5px;
   & p{
     margin: 0 auto;
+    
   }
   }
   & img{
