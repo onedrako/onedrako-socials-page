@@ -65,7 +65,6 @@ const ChillComponent = () => {
 
   const pushInfoToCardModal = (id, pattern) => {
     let gameModalId
-    const breakLoop = false
 
     const orderGames = gamesInfo.sort((a, b) => {
       return a.id - b.id
@@ -81,15 +80,22 @@ const ChillComponent = () => {
       gameModalId = id
     }
 
-    console.log(gamesInfo[gameModalId - 1])
+    let selectedGame = gamesInfo.filter(game => game.id === gameModalId)
 
-    if (gamesInfo[gameModalId] === undefined) {
-      gameModalId++
+    if (selectedGame[0]) {
+      setModalGameCardInfo(selectedGame[0])
+    } else {
+      while (!gamesInfo.filter(game => game.id === gameModalId)[0]) {
+        console.log('1', gamesInfo.filter(game => game.id === gameModalId)[0])
+        gameModalId++
+        console.log('2', gamesInfo.filter(game => game.id === gameModalId)[0])
+        if (gamesInfo.filter(game => game.id === gameModalId)[0]) {
+          selectedGame = gamesInfo.filter(game => game.id === gameModalId)
+          setModalGameCardInfo(selectedGame[0])
+          return
+        }
+      }
     }
-
-    const selectedGame = gamesInfo.filter(game => game.id === gameModalId)
-
-    setModalGameCardInfo(selectedGame[0])
   }
 
   useEffect(async () => {
