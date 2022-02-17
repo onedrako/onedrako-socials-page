@@ -14,7 +14,7 @@ const ModalStructure = styled.div`
   }
   & h3{
     text-align: center;
-    margin: 20px 0 15px 0;
+    margin: 35px 0 15px 0;
   }
   & p{
     margin-bottom: 10px;
@@ -76,30 +76,27 @@ const GameImageSection = styled.div`
       width: 190px;
       height: 270px;
   }
-
-
 `
 
 const PlatformSection = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 10px;
   width: 100%;
   justify-content: center;
   & div{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    @media (min-width: 500px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    grid-template-columns: 60% 40%;
+    justify-content: center;
+    align-items: center;
+  & p{
+    margin: 0 auto;
+  }
   }
   & img{
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
     margin: 0 auto;
     @media (min-width: 800px) {
       width: 70px;

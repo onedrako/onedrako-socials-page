@@ -47,6 +47,7 @@ const ChillComponent = () => {
   const [infoModal, setInfoModal] = React.useState(false)
   const [scheduleInfo, setScheduleInfo] = React.useState([])
   const [gamesInfo, setGamesInfo] = React.useState([])
+  const [modalGameCardInfo, setModalGameCardInfo] = React.useState({})
 
   const closeModal = () => {
     setInfoModal(!infoModal)
@@ -60,6 +61,13 @@ const ChillComponent = () => {
     return gameDayData.sort((a, b) => {
       return new Date(a.date) - new Date(b.date)
     })
+  }
+
+  const pushInfoToCardModal = (id) => {
+    const selectedGame = gamesInfo.filter(game => game.id === id)
+    console.log(selectedGame[0])
+    setModalGameCardInfo(selectedGame[0])
+    console.log(modalGameCardInfo)
   }
 
   useEffect(async () => {
@@ -84,12 +92,6 @@ const ChillComponent = () => {
 
   const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
   const dateToCountDown = new Date(`${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`)
-
-  console.log(gamesInfo)
-  // if (gamesInfo) {
-  //   setAvailableGames(gamesInfo.filter(game => game.available === true))
-  //   setUnavailableGames(gamesInfo.filter(game => game.available === false))
-  // }
 
   return (
     <main>
@@ -133,7 +135,7 @@ const ChillComponent = () => {
           {!gamesInfo
             ? null
             : gamesInfo.filter(game => game.available === true).map(game =>
-              <GameCard key={game.id} data={game} />)}
+              <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
         </GameCardContainer>
 
         <h3>No disponibles por el momento pero que hemos jugado</h3>
@@ -141,7 +143,7 @@ const ChillComponent = () => {
           {!gamesInfo
             ? null
             : gamesInfo.filter(game => game.available === false).map(game =>
-              <GameCard key={game.id} data={game} />)}
+              <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
 
         </GameCardContainer>
 

@@ -26,16 +26,16 @@ const customStyles = {
 
 const GameCard = (props) => {
   const [GameCardModal, setGameCardModal] = React.useState(false)
+  const data = props.data
 
   const closeModal = () => {
     setGameCardModal(!GameCardModal)
   }
 
-  const openModal = () => {
+  const openModal = async () => {
+    await props.pushInfo(data.id)
     setGameCardModal(!GameCardModal)
   }
-
-  const data = props.data
 
   if (!data) {
     return null
@@ -51,7 +51,7 @@ const GameCard = (props) => {
         appElement={document.getElementById('root')}
         contentLabel='Example Modal'
       >
-        <ModalGameCard />
+        <ModalGameCard info={props.modalInfo} />
 
       </Modal>
 

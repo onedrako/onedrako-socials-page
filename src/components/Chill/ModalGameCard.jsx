@@ -1,37 +1,53 @@
 import React from 'react'
 import { ModalStructure, LeftArrow, RightArrow, GameImageSection, PlatformSection } from '../../styles/Chill/Modal'
 
-const ModalGameCard = () => {
+const ModalGameCard = ({ info }) => {
+  const formatDate = (dateToConvert) => {
+    const date = new Date(dateToConvert)
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
+    return date.toLocaleDateString('es-ES', options)
+  }
+
   return (
     <ModalStructure>
-      <h2>Mario Kart 8</h2>
+      <h2>{info.name}</h2>
       <GameImageSection>
-        <img src='https://upload.wikimedia.org/wikipedia/en/b/b5/MarioKart8Boxart.jpg' alt='' />
+        <img src={info.boxImage} alt={info.name} />
         <LeftArrow />
         <RightArrow />
       </GameImageSection>
       <h3>¿Que hacemos en este juego?</h3>
-      <p>Jugando desde que salio este hermoso juego, en este si me defiendo</p>
+      <p>{info.description}</p>
       <PlatformSection>
         <h3>Plataformas</h3>
-        <div>
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-          <img src='https://1000marcas.net/wp-content/uploads/2020/02/logo-Wii-U.png' alt='' />
-        </div>
-      </PlatformSection>
-      <h3>Dias que se jugara esta semana</h3>
-      <div>
-        <p>Lunes</p>
-        <p>Lunes</p>
-        <p>Lunes</p>
 
-      </div>
-      <h3>Patrocinadores</h3>
-      <p>Aun no hay patrocinadores para este juego esta re disponible para pagarlo</p>
+        {info.platforms.map(platform => (
+          <div key={platform.id}>
+            <p key={platform.name}>{platform.name}</p>
+            <img src={platform.img} key={platform.id} />
+          </div>
+        ))}
+
+      </PlatformSection>
+
+      {info.available &&
+        <>
+          <h3>Dias que se jugara esta semana</h3>
+          <ul>
+            {info.gameDays.map(gameDay => (
+              <li key={gameDay.id}>{formatDate(gameDay.date)}</li>
+            ))}
+            {info.gameDays.length === 0 && <li>Tal vez no se jugara esta semana :( </li>}
+          </ul>
+
+          <h3>Patrocinadores</h3>
+          <ul>
+            {info.gameDays.filter(gameDay => gameDay.sponsor).length > 0
+              ? info.gameDays.filter(gameDay => gameDay.sponsor).map(gameDay => (<li key={gameDay.id}>{gameDay.sponsor}</li>))
+              : <p>No hay patrocinadores aun:(</p>}
+          </ul>
+
+        </>}
     </ModalStructure>
   )
 }
