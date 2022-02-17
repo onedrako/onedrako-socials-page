@@ -153,9 +153,9 @@ const ExtraInfo = styled.div`
   text-align: center;
   border-radius: 0 0 30px 30px;
   animation: ${appear} 1s ease-in-out;
-  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
   @media (min-width: 550px) {
     max-width: 400px
     }

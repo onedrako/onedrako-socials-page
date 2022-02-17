@@ -25,9 +25,9 @@ const BackFaceContainer = styled.div`
   height: 160px;
   transform-style: preserve-3d;
   position: relative;
-  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
   border-radius: 20px;
   &:hover{
     transform: rotateY(180deg);
