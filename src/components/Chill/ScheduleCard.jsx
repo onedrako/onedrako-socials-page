@@ -9,8 +9,8 @@ const ScheduleCard = (props) => {
           {props.children}
         </FlagsContainer>
         <SchedulesPerCountry>
-          <p>Inicio: 19:30</p>
-          <p>Final: 21:30</p>
+          <p>Inicio: {props.initialTime}</p>
+          <p>Final: {props.endTime}</p>
         </SchedulesPerCountry>
       </ScheduleCardContainer>
     </>

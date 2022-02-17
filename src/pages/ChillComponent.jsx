@@ -68,7 +68,10 @@ const ChillComponent = () => {
 
   const today = defineToday(gameDayData)
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+
   const initialStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`)
+  const endStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.endTime}`)
+
   const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
   const dateToCountDown = new Date(`${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`)
 
@@ -99,13 +102,13 @@ const ChillComponent = () => {
       <SectionContainer title='Calendario Semanal'>
         <GameSchedulesContainer>
           {orderByDate().map((gameDay, index) => (
-            <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} />
+            <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} timezone={userTimeZone} />
           ))}
         </GameSchedulesContainer>
       </SectionContainer>
 
       <SectionContainer title='Horario regular'>
-        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} />
+        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={initialStreamSchedule} endTime={endStreamSchedule} />
       </SectionContainer>
 
       <SectionContainer title='Juegos y Eventos'>

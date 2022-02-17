@@ -5,15 +5,14 @@ import { ScheduleCard } from './ScheduleCard'
 // import { NextStreamDiv } from '../../styles/Chill/ScheduleSection'
 
 const SchedulesContainer = (props) => {
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+  const initialTimeForUserCountry = props.initialTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
+  const endTimeForUserCountry = props.endTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
+
   return (
     <>
-      {/* <NextStreamDiv>
-        <h2>Siguiente Stream en:</h2>
-        <Countdown date={Date.now() + 10000} />
-      </NextStreamDiv> */}
-
       <div>
-        <ScheduleCard>
+        <ScheduleCard initialTime={initialTimeForUserCountry} endTime={endTimeForUserCountry}>
           {props.flagsInfo && props.flagsInfo.map((country, index) =>
             <img src={country.flag} alt={country.name} key={country.id} />
           )}
