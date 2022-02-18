@@ -15,7 +15,7 @@ import { AboutButton } from './../styles/Chill/PrincipalSection'
 import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
 import { NextStreamDiv } from '../styles/Chill/ScheduleSection'
 
-import { gameDayData } from './../../dataExample/gameDayData'
+import { gameDaData } from './../../dataExample/gameDayData'
 
 import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
 import { defineToday } from '../utils/defineToday'
@@ -44,6 +44,7 @@ const customStyles = {
 }
 
 const ChillComponent = () => {
+  const [gameDayData, setGameDayData] = React.useState(gameDaData)
   const [infoModal, setInfoModal] = React.useState(false)
   const [scheduleInfo, setScheduleInfo] = React.useState([])
   const [gamesInfo, setGamesInfo] = React.useState([])

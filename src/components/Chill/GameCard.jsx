@@ -67,10 +67,10 @@ const GameCard = (props) => {
           ))}
         </div>
         {data.platforms.length < 4
-          ? <>
+          ? <div>
             <p>Click mas información</p>
             <FiMousePointer />
-          </>
+          </div>
           : null}
 
       </BackCard>

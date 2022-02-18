@@ -7,7 +7,6 @@ import {
   PlatformSection,
   TitleDiv,
   GameDaysDiv,
-  PlatformsDiv,
   SponsorsDiv
 } from '../../styles/Chill/Modal'
 
@@ -63,7 +62,7 @@ const ModalGameCard = ({ info, pushInfo }) => {
             <h3>Patrocinadores</h3>
             <ul>
               {info.gameDays.filter(gameDay => gameDay.sponsor).length > 0
-                ? info.gameDays.filter(gameDay => gameDay.sponsor).map(gameDay => (<li key={gameDay.id}>{gameDay.sponsor}</li>))
+                ? info.gameDays.filter(gameDay => gameDay.sponsor).map(gameDay => (<p key={gameDay.id}>{gameDay.sponsor}</p>))
                 : <p>No hay patrocinadores aun 🙁</p>}
             </ul>
           </SponsorsDiv>

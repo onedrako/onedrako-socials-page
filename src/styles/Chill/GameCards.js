@@ -100,7 +100,7 @@ const BackCard = styled(Face)`
     height: 100%;
     & img{
       width: ${props => props.platformItems >= 2 ? 90 : 60}%;
-      height: ${props => props.platformItems >= 2 ? 40 : 40}px;
+      height: ${props => props.platformItems >= 2 ? 50 : 50}px;
       align-self: center;
       object-fit: contain;
       justify-self: center;

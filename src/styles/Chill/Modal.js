@@ -87,7 +87,7 @@ const ModalStructureForGameCard = styled.div`
     width: 600px;
   }
   @media (min-width: 1200px) {
-    width: 800px;
+    width: 700px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "image title-description " 
@@ -95,6 +95,9 @@ const ModalStructureForGameCard = styled.div`
                         "gameDays sponsors"
                         "platforms platforms ";
     grid-gap: 20px;
+  }
+  @media (min-width: 1200px) {
+    width: 800px;
   }
   & h2{
     text-align: center;
@@ -197,6 +200,7 @@ const TitleDiv = styled.div`
 const GameDaysDiv = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
   @media (min-width: 900px) {
     grid-area: gameDays;
   }
@@ -214,6 +218,7 @@ const SponsorsDiv = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  text-decoration: none;
   @media (min-width: 900px) {
     grid-area: sponsors;
   }
