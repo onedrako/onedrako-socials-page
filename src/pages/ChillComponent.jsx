@@ -22,6 +22,7 @@ import { defineToday } from '../utils/defineToday'
 
 const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
 const gamesAPI = 'http://localhost:3000/api/v1/games'
+const gameDaysApi = 'http://localhost:3000/api/v1/gameDays'
 
 const customStyles = {
   content: {
@@ -107,6 +108,15 @@ const ChillComponent = () => {
     try {
       const response = await axios(gamesAPI)
       setGamesInfo(response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
+
+  useEffect(async () => {
+    try {
+      const response = await axios(gameDaysApi)
+      setGameDayData(response.data)
     } catch (err) {
       console.log(err)
     }
