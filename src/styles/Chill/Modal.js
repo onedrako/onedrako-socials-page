@@ -8,6 +8,9 @@ const ModalStructure = styled.div`
   align-items: center;
   margin: 0 auto;
   /* position: absolute; */
+  @media (min-width: 900px) {
+    width: 525px;
+  }
   & h2{
     text-align: center;
     margin-bottom: 10px;
@@ -27,6 +30,7 @@ const ModalStructure = styled.div`
     background-color: #2b2e2e;
     border-radius: 30px;
     padding: 5px;
+    text-align: center;
   }
 
 
@@ -73,17 +77,48 @@ const RightArrow = styled(BsFillArrowRightCircleFill)`
   }
 `
 
-const GameImageSection = styled.div`
+const ModalStructureForGameCard = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: center;
-  & img{
-    margin-top : 20px;
-    width: 75%;
-    object-fit: cover;
-    @media (min-width: 500px) {
-      width: 190px;
-      height: 270px;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+  margin: 0 auto;
+  @media (min-width: 900px) {
+    width: 600px;
+  }
+  @media (min-width: 1200px) {
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "image title-description " 
+                        "description description"
+                        "gameDays sponsors"
+                        "platforms platforms ";
+    grid-gap: 20px;
+  }
+  & h2{
+    text-align: center;
+    margin-bottom: 10px;
+    
+  }
+  & h3{
+    text-align: center;
+    margin: 35px 0 15px 0;
+  }
+  & p{
+    margin-bottom: 10px;
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 10px;
+  }
+  & ul{
+    text-decoration: none;
+  }
+  & li{
+    background-color: #2b2e2e;
+    border-radius: 30px;
+    padding: 5px;
+    text-align: center;
   }
 `
 
@@ -92,6 +127,9 @@ const PlatformSection = styled.div`
   gap: 10px;
   width: 100%;
   justify-content: center;
+  @media (min-width: 900px) {
+    grid-area: platforms;
+  }
   & li{
     background-color: #2b2e2e;
     border-radius: 30px;
@@ -106,6 +144,11 @@ const PlatformSection = styled.div`
     background-color: #2b2e2e;
     border-radius: 30px;
     padding: 5px;
+    @media (min-width: 900px) {
+      width: 300px;
+  }
+    }
+
   & p{
     margin: 0 auto;
     
@@ -122,6 +165,58 @@ const PlatformSection = styled.div`
       width: 100px;
     }
   }
+}
+`
+
+const GameImageSection = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  & img{
+    margin-top : 20px;
+    width: 75%;
+    object-fit: cover;
+    @media (min-width: 500px) {
+      width: 190px;
+      height: 270px;
+  }
+  @media (min-width: 900px) {
+    grid-area: Image;
+  }
+}
+`
+
+const TitleDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 900px) {
+    grid-area: title-description;
+  }
+`
+
+const GameDaysDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 900px) {
+    grid-area: gameDays;
+  }
+`
+
+const PlatformsDiv = styled.div`
+  display: flex;
+  text-align: center;
+  @media (min-width: 900px) {
+    grid-area: platforms;
+  }
+`
+
+const SponsorsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @media (min-width: 900px) {
+    grid-area: sponsors;
+  }
 `
 
 export {
@@ -130,6 +225,12 @@ export {
   LeftArrow,
   RightArrow,
 
+  ModalStructureForGameCard,
   GameImageSection,
-  PlatformSection
+  PlatformSection,
+
+  TitleDiv,
+  GameDaysDiv,
+  PlatformsDiv,
+  SponsorsDiv
 }

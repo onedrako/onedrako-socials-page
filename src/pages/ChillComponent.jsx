@@ -66,43 +66,35 @@ const ChillComponent = () => {
   const pushInfoToCardModal = (id, pattern) => {
     let gameModalId
 
-    const orderGames = gamesInfo.sort((a, b) => {
-      return a.id - b.id
-    })
-    const min = orderGames[0].id
-    const max = orderGames[orderGames.length - 1].id
+    const gamesInOrderOfAvailability = [
+      ...gamesInfo.filter(game => { return game.available === true }),
+      ...gamesInfo.filter(game => { return game.available === false })
+    ]
 
-    if (id < min) {
-      gameModalId = max
-    } else if (id > max) {
-      gameModalId = min
-    } else {
-      gameModalId = id
+    if (!pattern) {
+      gameModalId = gamesInOrderOfAvailability.filter(game => { return game.id === id })[0]
+      setModalGameCardInfo(gameModalId)
+      return
     }
 
-    let selectedGame = gamesInfo.filter(game => game.id === gameModalId)
+    const indexOfActualGame = gamesInOrderOfAvailability.indexOf(gamesInOrderOfAvailability.find(game => game.id === id))
 
-    if (selectedGame[0]) {
-      setModalGameCardInfo(selectedGame[0])
-    } else if (pattern === 'next') {
-      while (!gamesInfo.filter(game => game.id === gameModalId)[0]) {
-        gameModalId++
-        if (gamesInfo.filter(game => game.id === gameModalId)[0]) {
-          selectedGame = gamesInfo.filter(game => game.id === gameModalId)
-          setModalGameCardInfo(selectedGame[0])
-          return
-        }
-      }
+    const min = 0
+    const max = gamesInOrderOfAvailability.length - 1
+
+    if (pattern === 'next') {
+      gameModalId = indexOfActualGame + 1
     } else if (pattern === 'previous') {
-      while (!gamesInfo.filter(game => game.id === gameModalId)[0]) {
-        gameModalId--
-        if (gamesInfo.filter(game => game.id === gameModalId)[0]) {
-          selectedGame = gamesInfo.filter(game => game.id === gameModalId)
-          setModalGameCardInfo(selectedGame[0])
-          return
-        }
-      }
+      gameModalId = indexOfActualGame - 1
     }
+
+    if (gameModalId < min) {
+      gameModalId = max
+    } else if (gameModalId > max) {
+      gameModalId = min
+    }
+
+    setModalGameCardInfo(gamesInOrderOfAvailability[gameModalId])
   }
 
   useEffect(async () => {
@@ -136,7 +128,6 @@ const ChillComponent = () => {
 
       <Modal
         isOpen={infoModal}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         appElement={document.getElementById('root')}

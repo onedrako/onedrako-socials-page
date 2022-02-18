@@ -186,12 +186,16 @@ const ExtraInfo = styled.div`
 
 const PlatformsStyledDiv = styled.div`
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-between;
+  padding: 0px 10px; 
   align-items: center;
   margin-top: 15px;
   background-color: #2b2e2e;
   border-radius: 30px;
   height: 50px;
+  @media (min-width: 550px) {
+    padding: 0px 40px; 
+  }
   & img{
       height: 70%;
       margin: 5px 0;

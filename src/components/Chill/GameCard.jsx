@@ -59,15 +59,20 @@ const GameCard = (props) => {
         <img src={data.boxImage} />
       </FrontCard>
 
-      <BackCard onClick={() => openModal()}>
+      <BackCard onClick={() => openModal()} platformItems={data.platforms.length}>
         <p>{data.name}</p>
         <div>
           {data.platforms.map(platform => (
             <img src={platform.img} key={platform.id} />
           ))}
         </div>
-        <p>Click mas información</p>
-        <FiMousePointer />
+        {data.platforms.length < 4
+          ? <>
+            <p>Click mas información</p>
+            <FiMousePointer />
+          </>
+          : null}
+
       </BackCard>
     </BackFaceContainer>
   )

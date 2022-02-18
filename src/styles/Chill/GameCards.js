@@ -74,17 +74,43 @@ const FrontCard = styled(Face)`
 `
 
 const BackCard = styled(Face)`
+  display: grid;
+  grid-template-rows: 25% 40% 25%; 
+  gap: 3px;
+  justify-content: center;
+  align-items: center;
   background: #171717;
   transition: 3s;
   transform: rotateY(180deg);
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   overflow: hidden;
-  & img{
-    width: 35%;
-    height: 35%;
-    object-fit: cover;
-    margin: 5px;
+  height: 100%;
+  & p {
+    width: 100%;
+    height: 30px;
+  }
+  & div{
+    display: grid;
+    grid-template-columns: repeat(${props => props.platformItems >= 2 ? 2 : 1}, 1fr);
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    & img{
+      width: ${props => props.platformItems >= 2 ? 90 : 60}%;
+      height: ${props => props.platformItems >= 2 ? 40 : 40}px;
+      align-self: center;
+      object-fit: contain;
+      justify-self: center;
+      background-color: #2b2e2e;
+      padding: 2px;
+      border-radius: 10px;
+    }
+  } 
+  & svg{
+    justify-self: center;
   }
   }
   & > *{

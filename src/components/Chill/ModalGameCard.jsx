@@ -1,5 +1,15 @@
 import React from 'react'
-import { ModalStructure, LeftArrow, RightArrow, GameImageSection, PlatformSection } from '../../styles/Chill/Modal'
+import {
+  ModalStructureForGameCard,
+  LeftArrow,
+  RightArrow,
+  GameImageSection,
+  PlatformSection,
+  TitleDiv,
+  GameDaysDiv,
+  PlatformsDiv,
+  SponsorsDiv
+} from '../../styles/Chill/Modal'
 
 const ModalGameCard = ({ info, pushInfo }) => {
   const formatDate = (dateToConvert) => {
@@ -9,19 +19,22 @@ const ModalGameCard = ({ info, pushInfo }) => {
   }
 
   return (
-    <ModalStructure>
-      <h2>{info.name}</h2>
+    <ModalStructureForGameCard>
 
       <GameImageSection>
         <img src={info.boxImage} alt={info.name} />
 
-        <LeftArrow onClick={() => pushInfo(info.id - 1, 'previous')} />
-        <RightArrow onClick={() => pushInfo(info.id + 1, 'next')} />
+        <LeftArrow onClick={() => pushInfo(info.id, 'previous')} />
+        <RightArrow onClick={() => pushInfo(info.id, 'next')} />
 
       </GameImageSection>
 
-      <h3>¿Que hacemos en este juego?</h3>
-      <p>{info.description}</p>
+      <TitleDiv>
+        <h2>{info.name}</h2>
+        <h3>¿Que hacemos en este juego?</h3>
+        <p>{info.description}</p>
+      </TitleDiv>
+
       <PlatformSection>
         <h3>Plataformas</h3>
 
@@ -36,23 +49,26 @@ const ModalGameCard = ({ info, pushInfo }) => {
 
       {info.available &&
         <>
-          <h3>Dias que se jugara esta semana</h3>
-          <ul>
+          <GameDaysDiv>
+            <h3>Dias que se jugara esta semana</h3>
+
             {info.gameDays.map(gameDay => (
-              <li key={gameDay.id}>{formatDate(gameDay.date)}</li>
+              <p key={gameDay.id}>{formatDate(gameDay.date)}</p>
             ))}
             {info.gameDays.length === 0 && <li>Tal vez no se jugara esta semana :( </li>}
-          </ul>
 
-          <h3>Patrocinadores</h3>
-          <ul>
-            {info.gameDays.filter(gameDay => gameDay.sponsor).length > 0
-              ? info.gameDays.filter(gameDay => gameDay.sponsor).map(gameDay => (<li key={gameDay.id}>{gameDay.sponsor}</li>))
-              : <p>No hay patrocinadores aun:(</p>}
-          </ul>
+          </GameDaysDiv>
 
+          <SponsorsDiv>
+            <h3>Patrocinadores</h3>
+            <ul>
+              {info.gameDays.filter(gameDay => gameDay.sponsor).length > 0
+                ? info.gameDays.filter(gameDay => gameDay.sponsor).map(gameDay => (<li key={gameDay.id}>{gameDay.sponsor}</li>))
+                : <p>No hay patrocinadores aun 🙁</p>}
+            </ul>
+          </SponsorsDiv>
         </>}
-    </ModalStructure>
+    </ModalStructureForGameCard>
   )
 }
 
