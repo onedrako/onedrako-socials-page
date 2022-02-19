@@ -15,10 +15,8 @@ import { AboutButton } from './../styles/Chill/PrincipalSection'
 import { GameSchedulesContainer } from './../styles/Chill/GameCardDay'
 import { NextStreamDiv } from '../styles/Chill/ScheduleSection'
 
-import { gameDaData } from './../../dataExample/gameDayData'
-
 import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
-import { defineToday } from '../utils/defineToday'
+import { defineTimesForChillSection } from '../utils/defineTimesForChillSection'
 
 const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
 const gamesAPI = 'http://localhost:3000/api/v1/games'
@@ -45,11 +43,14 @@ const customStyles = {
 }
 
 const ChillComponent = () => {
-  const [gameDayData, setGameDayData] = React.useState(gameDaData)
-  const [infoModal, setInfoModal] = React.useState(false)
+  const [gameDayData, setGameDayData] = React.useState([])
   const [scheduleInfo, setScheduleInfo] = React.useState([])
   const [gamesInfo, setGamesInfo] = React.useState([])
+
+  const [infoModal, setInfoModal] = React.useState(false)
   const [modalGameCardInfo, setModalGameCardInfo] = React.useState({})
+
+  const [time, setTime] = React.useState({})
 
   const closeModal = () => {
     setInfoModal(!infoModal)
@@ -57,12 +58,6 @@ const ChillComponent = () => {
 
   const openModal = () => {
     setInfoModal(!infoModal)
-  }
-
-  const orderByDate = () => {
-    return gameDayData.sort((a, b) => {
-      return new Date(a.date) - new Date(b.date)
-    })
   }
 
   const pushInfoToCardModal = (id, pattern) => {
@@ -99,37 +94,32 @@ const ChillComponent = () => {
     setModalGameCardInfo(gamesInOrderOfAvailability[gameModalId])
   }
 
-  useEffect(async () => {
-    const response = await axios(schedulesAPI)
-    setScheduleInfo(await response.data)
+  useEffect(() => {
+    axios.get(schedulesAPI).then(response => {
+      setScheduleInfo(response.data)
+    })
   }, [])
 
-  useEffect(async () => {
-    try {
-      const response = await axios(gamesAPI)
+  useEffect(() => {
+    axios.get(gamesAPI).then(response => {
       setGamesInfo(response.data)
-    } catch (err) {
-      console.log(err)
-    }
+    })
   }, [])
 
-  useEffect(async () => {
-    try {
-      const response = await axios(gameDaysApi)
+  useEffect(() => {
+    axios.get(gameDaysApi).then(response => {
       setGameDayData(response.data)
-    } catch (err) {
-      console.log(err)
-    }
+      setTime(defineTimesForChillSection(response.data))
+    })
   }, [])
 
-  const today = defineToday(gameDayData)
-  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+  const orderByDate = () => {
+    return gameDayData.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date)
+    })
+  }
 
-  const initialStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`)
-  const endStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.endTime}`)
-
-  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
-  const dateToCountDown = new Date(`${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`)
+  console.log(time.initialStreamSchedule)
 
   return (
     <main>
@@ -147,24 +137,31 @@ const ChillComponent = () => {
         <ModalInfo />
       </Modal>
 
-      <SectionContainer>
-        <NextStreamDiv>
-          <h2>Siguiente Stream en:</h2>
-          <Countdown date={dateToCountDown} />
-        </NextStreamDiv>
-      </SectionContainer>
+      {(!time && !gameDayData)
+        ? <p>Cargando los datos, espere por favor, Gabito y Lola Catalina están peleando con un santo buggazo...</p>
+        : <>
+          <SectionContainer>
+            <NextStreamDiv>
+              <h2>Siguiente Stream en:</h2>
+              {!time.dateToCountDown ? <p>Cargando...</p> : <Countdown date={new Date(time.dateToCountDown)} />}
+            </NextStreamDiv>
+          </SectionContainer>
 
-      <SectionContainer title='Horario del siguiente stream'>
-        <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={initialStreamSchedule} endTime={endStreamSchedule} />
-      </SectionContainer>
+          <SectionContainer title='Horario del siguiente stream'>
+            {(!time.initialStreamSchedule ?? !time.endStreamSchedule)
+              ? <p>Cargando...</p>
+              : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={new Date(time.initialStreamSchedule)} endTime={new Date(time.endStreamSchedule)} />}
 
-      <SectionContainer title='Calendario Semanal'>
-        <GameSchedulesContainer>
-          {orderByDate().map((gameDay, index) => (
-            <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} timezone={userTimeZone} />
-          ))}
-        </GameSchedulesContainer>
-      </SectionContainer>
+          </SectionContainer>
+
+          <SectionContainer title='Calendario Semanal'>
+            <GameSchedulesContainer>
+              {orderByDate().map((gameDay, index) => (
+                <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} timezone={time.userTimeZone} />
+              ))}
+            </GameSchedulesContainer>
+          </SectionContainer>
+        </>}
 
       <SectionContainer title='Juegos y Eventos'>
         <h3>Disponibles</h3>
