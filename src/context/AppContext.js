@@ -20,6 +20,7 @@ const AppProvider = (props) => {
   }
 
   const [flagUrl, dispatch] = useReducer(reducer, { url: '' })
+
   return (
     <AppContext.Provider value={{
       huellitaValues,

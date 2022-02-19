@@ -3,6 +3,9 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import { Routes, Route } from 'react-router-dom'
 
 import { NavBarComponent } from './components/Nav/NavBarComponent'
+
+import { ChillComponent } from './pages/ChillComponent'
+
 import { DiscordComponent } from './pages/DiscordComponent'
 import { DiscordHuellita } from './pages/DiscordHuellita'
 
@@ -13,7 +16,7 @@ const App = () => {
       <NavBarComponent />
       <Routes>
         <Route path='/' element={<h1>Sitio en Construcción</h1>} />
-        <Route path='/chill' element={<h1>Canal de Juegos</h1>} />
+        <Route path='/chill' element={<ChillComponent />} />
         <Route path='/productividad' element={<h1>Sitio en construcción Productividad</h1>} />
 
         <Route path='/discord' element={<DiscordComponent />} />

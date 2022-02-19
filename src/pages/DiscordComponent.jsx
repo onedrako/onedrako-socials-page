@@ -10,7 +10,7 @@ const DiscordComponent = () => {
   return (
     <main>
       <h1>Página de Información de Discord || En construcción</h1>
-      <p>Si vienes en busqueda del formulario para tu presentación has click <Link style={linkStyle} to='/discord/huellita'>aqui</Link> </p>
+      <p>Si vienes en busqueda del formulario para tu presentación has click <Link style={linkStyle} to='/discord/huellita'>aquí</Link> </p>
     </main>
   )
 }
