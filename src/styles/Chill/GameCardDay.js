@@ -39,7 +39,15 @@ const GameDayCardContainer = styled.div`
   width : 100%;
   `
 
-const CardContainer = styled.div`
+const CardContainer = styled.div.attrs({
+  shadowColor: props => {
+    if (props.shortName === 'ESP') {
+      return 'rgba(251, 186, 0, 0.75)'
+    } else {
+      return 'rgba(0, 0, 0, 0.5)'
+    }
+  }
+})`
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -49,9 +57,9 @@ const CardContainer = styled.div`
   z-index: 1;
   margin-top: 20px;
   filter: grayscale(${props => props.status});
-  -webkit-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 8px -6px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
+  -moz-box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
+  box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
   border-radius: 0 30px 0 0;
   @media (min-width: 550px) {
       max-width: 400px
@@ -127,6 +135,20 @@ const MainInfoContainer = styled.div`
   }
   `
 
+const SpecialEventP = styled.p`
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+    width: 100%;
+    height: 20%;
+    border-radius: 0 20px 0 0;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+`
+
 const SponsorIcon = styled(ImTicket)`
     filter: grayscale(${props => props.sponsor});
   margin-right: 5px;
@@ -143,19 +165,27 @@ const appear = keyframes`
   }
 `
 
-const ExtraInfo = styled.div`
+const ExtraInfo = styled.div.attrs({
+  shadowColor: props => {
+    if (props.shortName === 'ESP') {
+      return 'rgba(251, 186, 0, 0.75)'
+    } else {
+      return 'rgba(0, 0, 0, 0.5)'
+    }
+  }
+})`
   display: grid;
   gap: 15px;
   width: 80%;
   align-items: center;
   background-color: #171717;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   border-radius: 0 0 30px 30px;
   animation: ${appear} 1s ease-in-out;
-  -webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
-  box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
+  -moz-box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
+  box-shadow: 8px -6px 5px 0px ${props => props.shadowColor};
   @media (min-width: 550px) {
     max-width: 400px
     }
@@ -177,7 +207,9 @@ const ExtraInfo = styled.div`
     font-size: 1rem;
     background-color: #2b2e2e;
     border-radius: 30px;
-    padding: 5px;
+    padding: 10px;
+    width: 80%;
+    margin: 0 auto;
     @media (min-width: 550px) {
       font-size: 1.2rem;
     }
@@ -196,8 +228,12 @@ const PlatformsStyledDiv = styled.div`
   @media (min-width: 550px) {
     padding: 0px 40px; 
   }
+  @media (min-width: 1100px) {
+    padding: 0px 20px; 
+  }
   & img{
       height: 70%;
+      width: 20%;
       margin: 5px 0;
       object-fit: cover;
   }
@@ -219,6 +255,7 @@ export {
   GameDayCardContainer,
   CardContainer,
   MainInfoContainer,
+  SpecialEventP,
   SponsorIcon,
   // NotAvailable,
 

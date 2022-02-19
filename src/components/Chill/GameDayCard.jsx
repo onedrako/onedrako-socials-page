@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { ModalSponsor } from './ModalSponsor'
 import { PlatformsDiv } from './platformsDiv'
 
-import { GameDayCardContainer, CardContainer, MainInfoContainer, SponsorIcon, ExtraInfo } from '../../styles/Chill/GameCardDay'
+import { GameDayCardContainer, CardContainer, MainInfoContainer, SpecialEventP, SponsorIcon, ExtraInfo } from '../../styles/Chill/GameCardDay'
 
 import { defineStatus } from '../../utils/defineStatus'
 
@@ -64,8 +64,9 @@ const GameDayCard = ({ gameDay }) => {
       </Modal>
 
       <GameDayCardContainer>
-        <CardContainer status={status}>
+        <CardContainer status={status} shortName={gameDay.shortName}>
           <img onClick={() => setExtraInfo(!extraInfo)} src={gameDay.game.largeImage} alt={`Imagen de ${gameDay.game.name}`} />
+          {gameDay.shortName === 'ESP' ? <SpecialEventP>EVENTO ESPECIAL</SpecialEventP> : null}
           <MainInfoContainer>
             <h3>{result}</h3>
             <div>
@@ -78,7 +79,7 @@ const GameDayCard = ({ gameDay }) => {
         </CardContainer>
 
         {extraInfo
-          ? <ExtraInfo>
+          ? <ExtraInfo shortName={gameDay.shortName}>
             <h2>{gameDay.game.name}</h2>
             <p>{gameDay.game.description}</p>
 

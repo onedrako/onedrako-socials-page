@@ -18,9 +18,12 @@ import { NextStreamDiv } from '../styles/Chill/ScheduleSection'
 import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
 import { defineTimesForChillSection } from '../utils/defineTimesForChillSection'
 
-const schedulesAPI = `http://localhost:3000/api/v1/schedules/${detectTimeZoneForSchedules()}`
-const gamesAPI = 'http://localhost:3000/api/v1/games'
-const gameDaysApi = 'http://localhost:3000/api/v1/gameDays'
+const prod = 'https://floating-brushlands-65510.herokuapp.com/api/v1/'
+const dev = 'http://localhost:3000/api/v1/'
+
+const schedulesAPI = `${dev}/schedules/${detectTimeZoneForSchedules()}` || `${prod}/schedules/${detectTimeZoneForSchedules()}`
+const gamesAPI = `${dev}/games` || `${prod}/games`
+const gameDaysApi = `${dev}/gameDays` || `${prod}//gameDays`
 
 const customStyles = {
   content: {
@@ -108,8 +111,8 @@ const ChillComponent = () => {
 
   useEffect(() => {
     axios.get(gameDaysApi).then(response => {
-      setGameDayData(response.data)
-      setTime(defineTimesForChillSection(response.data))
+      setGameDayData(response.data.filter(gameDay => { return gameDay.schedule }))
+      setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
     })
   }, [])
 
@@ -118,8 +121,6 @@ const ChillComponent = () => {
       return new Date(a.date) - new Date(b.date)
     })
   }
-
-  console.log(time.initialStreamSchedule)
 
   return (
     <main>
@@ -157,11 +158,11 @@ const ChillComponent = () => {
           <SectionContainer title='Calendario Semanal'>
             <GameSchedulesContainer>
               {orderByDate().map((gameDay, index) => (
-                <GameDayCard gameDay={gameDay} key={gameDay.id} initialTime={scheduleInfo.initialTime} endTime={scheduleInfo.endTime} timezone={time.userTimeZone} />
+                <GameDayCard gameDay={gameDay} key={gameDay.id} timezone={time.userTimeZone} />
               ))}
             </GameSchedulesContainer>
           </SectionContainer>
-        </>}
+          </>}
 
       <SectionContainer title='Juegos y Eventos'>
         <h3>Disponibles</h3>
