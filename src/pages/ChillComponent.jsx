@@ -18,7 +18,7 @@ import { NextStreamDiv } from '../styles/Chill/ScheduleSection'
 import { detectTimeZoneForSchedules } from '../utils/detectTimeZoneForSchedules'
 import { defineTimesForChillSection } from '../utils/defineTimesForChillSection'
 
-const prod = 'https://floating-brushlands-65510.herokuapp.com/api/v1/'
+const prod = 'https://floating-brushlands-65510.herokuapp.com/api/v1'
 const dev = 'http://localhost:3000/api/v1/'
 
 const schedulesAPI = `${prod || dev}/schedules/${detectTimeZoneForSchedules()}`
