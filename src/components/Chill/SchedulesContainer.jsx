@@ -6,6 +6,7 @@ import { ScheduleCard } from './ScheduleCard'
 
 const SchedulesContainer = (props) => {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
+  console.log(userTimeZone)
   const initialTimeForUserCountry = props.initialTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
   const endTimeForUserCountry = props.endTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
 
