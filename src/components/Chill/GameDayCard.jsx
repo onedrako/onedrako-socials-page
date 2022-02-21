@@ -42,14 +42,16 @@ const GameDayCard = ({ gameDay }) => {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
 
   // const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
-  const initialStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
+  const initialStreamSchedule = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`, 'America/Mexico_City')
   // const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
 
   const myStartStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`, 'America/Mexico_City')
   const myEndStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`, 'America/Mexico_City')
 
-  const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
-  const dateForGameCard = initialStreamSchedule.toLocaleDateString('es-ES', options)
+  // const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
+  // const dateForGameCard = initialStreamSchedule.toLocaleDateString('es-ES', options)
+
+  const dateForGameCard = moment.tz(initialStreamSchedule, userTimeZone.timeZone).locale('es').format('dd, DD/MMMM')
 
   const initialTimeForUserCountry = moment.tz(myStartStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
   const endTimeForUserCountry = moment.tz(myEndStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
