@@ -43,10 +43,10 @@ const GameDayCard = ({ gameDay }) => {
 
   // const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
   const initialStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
-  const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
+  // const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
 
-  const myStartStreamAreaInMexicoCity = moment.tz(initialStreamSchedule, 'America/Mexico_City')
-  const myEndStreamAreaInMexicoCity = moment.tz(endStreamSchedule, 'America/Mexico_City')
+  const myStartStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`, 'America/Mexico_City')
+  const myEndStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`, 'America/Mexico_City')
 
   const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
   const dateForGameCard = initialStreamSchedule.toLocaleDateString('es-ES', options)
