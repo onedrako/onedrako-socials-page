@@ -7,7 +7,7 @@ const defineTimesForChillSection = (data) => {
   const initialStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`)
   const endStreamSchedule = new Date(`${today[0].date.substring(0, 10)}T${today[0].schedule.endTime}`)
 
-  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
+  const initialTimeForUserCountry = (initialStreamSchedule).toLocaleTimeString('es-ES', { timeZone: `${userTimeZone.timeZone}` })
   const dateToCountDown = `${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`
 
   return {

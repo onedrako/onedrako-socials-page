@@ -21,9 +21,9 @@ import { defineTimesForChillSection } from '../utils/defineTimesForChillSection'
 const prod = 'https://floating-brushlands-65510.herokuapp.com/api/v1/'
 const dev = 'http://localhost:3000/api/v1/'
 
-const schedulesAPI = `${dev}/schedules/${detectTimeZoneForSchedules()}` || `${prod}/schedules/${detectTimeZoneForSchedules()}`
-const gamesAPI = `${dev}/games` || `${prod}/games`
-const gameDaysApi = `${dev}/gameDays` || `${prod}//gameDays`
+const schedulesAPI = `${prod || dev}/schedules/${detectTimeZoneForSchedules()}`
+const gamesAPI = `${prod || dev}/games`
+const gameDaysApi = `${prod || dev}/gameDays`
 
 const customStyles = {
   content: {
@@ -162,14 +162,14 @@ const ChillComponent = () => {
               ))}
             </GameSchedulesContainer>
           </SectionContainer>
-          </>}
+        </>}
 
       <SectionContainer title='Juegos y Eventos'>
         <h3>Disponibles</h3>
         <GameCardContainer>
           {!gamesInfo
             ? null
-            : gamesInfo.filter(game => game.available === true).map(game =>
+            : gamesInfo.filter(game => game.available === true).sort((a, b) => { return a.id - b.id }).map(game =>
               <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
         </GameCardContainer>
 
@@ -177,7 +177,7 @@ const ChillComponent = () => {
         <GameCardContainer>
           {!gamesInfo
             ? null
-            : gamesInfo.filter(game => game.available === false).map(game =>
+            : gamesInfo.filter(game => game.available === false).sort((a, b) => { return a.id - b.id }).map(game =>
               <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
 
         </GameCardContainer>
