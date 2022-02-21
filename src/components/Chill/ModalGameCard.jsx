@@ -54,7 +54,7 @@ const ModalGameCard = ({ info, pushInfo }) => {
             {info.gameDays.map(gameDay => (
               <p key={gameDay.id}>{formatDate(gameDay.date)}</p>
             ))}
-            {info.gameDays.length === 0 && <li>Tal vez no se jugara esta semana :( </li>}
+            {info.gameDays.length === 0 && <p>Tal vez no se jugara esta semana :( </p>}
 
           </GameDaysDiv>
 

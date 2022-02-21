@@ -55,6 +55,8 @@ const ChillComponent = () => {
 
   const [time, setTime] = React.useState({})
 
+  const [loading, setLoading] = React.useState(false)
+
   const closeModal = () => {
     setInfoModal(!infoModal)
   }
@@ -113,6 +115,7 @@ const ChillComponent = () => {
     axios.get(gameDaysApi).then(response => {
       setGameDayData(response.data.filter(gameDay => { return gameDay.schedule }))
       setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
+      setLoading(true)
     })
   }, [])
 
@@ -137,9 +140,8 @@ const ChillComponent = () => {
       >
         <ModalInfo />
       </Modal>
-
-      {(!time && !gameDayData)
-        ? <p>Cargando los datos, espere por favor, Gabito y Lola Catalina están peleando con un santo buggazo...</p>
+      {!loading
+        ? <p style={{ textAlign: 'center' }}>Cargando los datos, espere por favor, Gabito y Lola Catalina están peleando con un santo buggazo...</p>
         : <>
           <SectionContainer>
             <NextStreamDiv>
@@ -162,27 +164,27 @@ const ChillComponent = () => {
               ))}
             </GameSchedulesContainer>
           </SectionContainer>
-        </>}
 
-      <SectionContainer title='Juegos y Eventos'>
-        <h3>Disponibles</h3>
-        <GameCardContainer>
-          {!gamesInfo
-            ? null
-            : gamesInfo.filter(game => game.available === true).sort((a, b) => { return a.id - b.id }).map(game =>
-              <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
-        </GameCardContainer>
+          <SectionContainer title='Juegos y Eventos'>
+            <h3>Disponibles</h3>
+            <GameCardContainer>
+              {!gamesInfo
+                ? null
+                : gamesInfo.filter(game => game.available === true).sort((a, b) => { return a.id - b.id }).map(game =>
+                  <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
+            </GameCardContainer>
 
-        <h3>No disponibles por el momento pero que hemos jugado</h3>
-        <GameCardContainer>
-          {!gamesInfo
-            ? null
-            : gamesInfo.filter(game => game.available === false).sort((a, b) => { return a.id - b.id }).map(game =>
-              <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
+            <h3>No disponibles por el momento pero que hemos jugado</h3>
+            <GameCardContainer>
+              {!gamesInfo
+                ? null
+                : gamesInfo.filter(game => game.available === false).sort((a, b) => { return a.id - b.id }).map(game =>
+                  <GameCard key={game.id} data={game} pushInfo={pushInfoToCardModal} modalInfo={modalGameCardInfo} />)}
 
-        </GameCardContainer>
+            </GameCardContainer>
 
-      </SectionContainer>
+          </SectionContainer>
+          </>}
     </main>
   )
 }
