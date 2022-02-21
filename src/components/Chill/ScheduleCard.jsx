@@ -2,7 +2,6 @@ import React from 'react'
 import { FlagsContainer, ScheduleCardContainer, SchedulesPerCountry } from '../../styles/Chill/ScheduleCard'
 
 const ScheduleCard = (props) => {
-  console.log(props)
   return (
     <>
       <ScheduleCardContainer>

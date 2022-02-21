@@ -6,6 +6,7 @@ import { PlatformsDiv } from './platformsDiv'
 import { GameDayCardContainer, CardContainer, MainInfoContainer, SpecialEventP, SponsorIcon, ExtraInfo } from '../../styles/Chill/GameCardDay'
 
 import { defineStatus } from '../../utils/defineStatus'
+import moment from 'moment-timezone'
 
 const customStyles = {
   content: {
@@ -40,17 +41,23 @@ const GameDayCard = ({ gameDay }) => {
   }
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
 
-  const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
-  const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
-  const result = date.toLocaleDateString('es-ES', options)
-
-  const status = defineStatus(gameDay.state, gameDay.date)
-
+  // const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
   const initialStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
   const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
 
-  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
-  const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
+  const myStartStreamAreaInMexicoCity = moment.tz(initialStreamSchedule, 'America/Mexico_City')
+  const myEndStreamAreaInMexicoCity = moment.tz(endStreamSchedule, 'America/Mexico_City')
+
+  const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
+  const dateForGameCard = initialStreamSchedule.toLocaleDateString('es-ES', options)
+
+  const initialTimeForUserCountry = moment.tz(myStartStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
+  const endTimeForUserCountry = moment.tz(myEndStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
+
+  // const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
+  // const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
+
+  const status = defineStatus(gameDay.state, gameDay.date)
 
   return (
     <>
@@ -69,7 +76,7 @@ const GameDayCard = ({ gameDay }) => {
           <img onClick={() => setExtraInfo(!extraInfo)} src={gameDay.game.largeImage} alt={`Imagen de ${gameDay.game.name}`} />
           {gameDay.shortName === 'ESP' ? <SpecialEventP>EVENTO ESPECIAL</SpecialEventP> : null}
           <MainInfoContainer>
-            <h3>{result}</h3>
+            <h3>{dateForGameCard}</h3>
             <div>
               <span onClick={() => openModal()}>
                 <SponsorIcon sponsor={gameDay.sponsor} />

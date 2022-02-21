@@ -115,7 +115,6 @@ const ChillComponent = () => {
     axios.get(gameDaysApi).then(response => {
       setGameDayData(response.data.filter(gameDay => { return gameDay.schedule }))
       setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
-      console.log(response.data)
       setLoading(true)
     })
   }, [])
@@ -154,7 +153,7 @@ const ChillComponent = () => {
           <SectionContainer title='Horario del siguiente stream'>
             {(!time.initialStreamSchedule ?? !time.endStreamSchedule)
               ? <p>Cargando...</p>
-              : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={new Date(time.initialStreamSchedule)} endTime={new Date(time.endStreamSchedule)} />}
+              : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={time.initialStreamSchedule} endTime={time.endStreamSchedule} />}
 
           </SectionContainer>
 
