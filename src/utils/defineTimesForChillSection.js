@@ -3,7 +3,6 @@ import moment from 'moment-timezone'
 
 const defineTimesForChillSection = (data) => {
   const today = defineToday(data)
-  console.log('today', today)
 
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
   const myStartStreamAreaInMexicoCity = moment.tz(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`, 'America/Mexico_City')
@@ -12,7 +11,7 @@ const defineTimesForChillSection = (data) => {
   const initialTimeForUserCountry = moment.tz(myStartStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
   const endTimeForUserCountry = moment.tz(myEndStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
 
-  const dateToCountDown = `${today[0].date.substring(0, 10)}T${initialTimeForUserCountry}`
+  const dateToCountDown = moment.tz(myStartStreamAreaInMexicoCity, userTimeZone.timeZone).format()
 
   return {
     userTimeZone: userTimeZone.timeZone,

@@ -8,7 +8,6 @@ const today = new Date(Date.now())
 
 const defineToday = (days) => {
   const actualDay = getDayAndMonth(today)
-  console.log('actualDay', actualDay)
 
   const coincidence = days.filter(gameDay => {
     const { date } = gameDay
@@ -17,7 +16,6 @@ const defineToday = (days) => {
     return JSON.stringify(actualDay) === JSON.stringify(getTodayDayAndMonth)
   }
   )
-  console.log('coincidence', coincidence)
 
   return coincidence
 }
