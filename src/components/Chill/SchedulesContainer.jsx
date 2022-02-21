@@ -1,14 +1,15 @@
 import React from 'react'
-// import Countdown from 'react-countdown'
 import { ScheduleCard } from './ScheduleCard'
 
-// import { NextStreamDiv } from '../../styles/Chill/ScheduleSection'
-
 const SchedulesContainer = (props) => {
-  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
-  console.log(userTimeZone)
-  const initialTimeForUserCountry = props.initialTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
-  const endTimeForUserCountry = props.endTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+  // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
+  // const userTimeZone = 'America/Bogota'
+
+  const initialTimeForUserCountry = props.initialTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone })
+  // console.log(initialTimeForUserCountry)
+  const endTimeForUserCountry = props.endTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone })
 
   return (
     <>

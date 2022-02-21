@@ -38,18 +38,19 @@ const GameDayCard = ({ gameDay }) => {
   const openModal = () => {
     setSponsorModal(!sponsorModal)
   }
+  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
 
-  const date = new Date(gameDay.date)
-  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
+  const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
+  const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
   const result = date.toLocaleDateString('es-ES', options)
 
   const status = defineStatus(gameDay.state, gameDay.date)
 
-  const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
   const initialStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
   const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
-  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
-  const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: `${userTimeZone.timeZone}` })
+
+  const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
+  const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
 
   return (
     <>

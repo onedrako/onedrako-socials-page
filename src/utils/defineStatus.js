@@ -1,7 +1,7 @@
 const defineStatus = (status, date) => {
   const today = Date.now()
   const gameDay = new Date(date)
-  const dateToCompare = gameDay.setHours(gameDay.getHours() + 24)
+  const dateToCompare = gameDay.setHours(gameDay.getHours() + 6)
 
   if (status === false) {
     return status

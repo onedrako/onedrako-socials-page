@@ -115,6 +115,7 @@ const ChillComponent = () => {
     axios.get(gameDaysApi).then(response => {
       setGameDayData(response.data.filter(gameDay => { return gameDay.schedule }))
       setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
+      console.log(response.data)
       setLoading(true)
     })
   }, [])
@@ -184,7 +185,7 @@ const ChillComponent = () => {
             </GameCardContainer>
 
           </SectionContainer>
-          </>}
+        </>}
     </main>
   )
 }
