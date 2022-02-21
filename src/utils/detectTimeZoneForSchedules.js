@@ -1,5 +1,4 @@
 const timeDifference = new Date().getTimezoneOffset() / 60
-console.log(timeDifference)
 const season = 'Invierno'
 let zone
 
