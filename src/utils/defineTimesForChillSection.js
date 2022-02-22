@@ -31,6 +31,7 @@ const defineTimesForChillSection = (data) => {
         ? addDays++
         : status = true
     }
+
     if (addDays === 0) {
       dateToCountDown = moment.tz(myEndStreamAreaInMexicoCity, userTimeZone.timeZone).add(1, 'days').format()
     } else {
