@@ -184,7 +184,7 @@ const ChillComponent = () => {
             </GameCardContainer>
 
           </SectionContainer>
-        </>}
+          </>}
     </main>
   )
 }
