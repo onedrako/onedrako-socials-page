@@ -5,7 +5,7 @@ const SchedulesContainer = (props) => {
   return (
     <>
       <div>
-        <ScheduleCard initialTime={props.initialTime} endTime={props.endTime}>
+        <ScheduleCard initialTime={props.initialTime} endTime={props.endTime} timeZone={props.timeZone}>
           {props.flagsInfo && props.flagsInfo.map((country, index) =>
             <img src={country.flag} alt={country.name} key={country.id} />
           )}

@@ -153,7 +153,7 @@ const ChillComponent = () => {
           <SectionContainer title='Horario del siguiente stream'>
             {(!time.initialStreamSchedule ?? !time.endStreamSchedule)
               ? <p>Cargando...</p>
-              : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={time.initialStreamSchedule} endTime={time.endStreamSchedule} />}
+              : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={time.initialStreamSchedule} endTime={time.endStreamSchedule} timeZone={time.userTimeZone} />}
 
           </SectionContainer>
 

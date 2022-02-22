@@ -41,25 +41,17 @@ const GameDayCard = ({ gameDay }) => {
   }
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
 
-  // const date = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`)
   const initialStreamSchedule = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`, 'America/Mexico_City')
-  // const endStreamSchedule = new Date(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`)
 
   const myStartStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.initialTime}`, 'America/Mexico_City')
   const myEndStreamAreaInMexicoCity = moment.tz(`${gameDay.date.substring(0, 10)}T${gameDay.schedule.endTime}`, 'America/Mexico_City')
-
-  // const options = { weekday: 'short', month: 'short', day: 'numeric', timezone: userTimeZone.timeZone }
-  // const dateForGameCard = initialStreamSchedule.toLocaleDateString('es-ES', options)
 
   const dateForGameCard = moment.tz(initialStreamSchedule, userTimeZone.timeZone).locale('es').format('dd, DD/MMMM')
 
   const initialTimeForUserCountry = moment.tz(myStartStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
   const endTimeForUserCountry = moment.tz(myEndStreamAreaInMexicoCity, userTimeZone.timeZone).format('HH:mm')
 
-  // const initialTimeForUserCountry = initialStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
-  // const endTimeForUserCountry = endStreamSchedule.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: userTimeZone.timeZone })
-
-  const status = defineStatus(gameDay.state, gameDay.date)
+  const status = defineStatus(gameDay.state, gameDay.date, gameDay.schedule)
 
   return (
     <>
@@ -93,18 +85,22 @@ const GameDayCard = ({ gameDay }) => {
             <h2>{gameDay.game.name}</h2>
             <p>{gameDay.game.description}</p>
 
-            <div>
-              <h3>Plataformas donde juego: </h3>
-              {gameDay.game.platforms.map((platform, index) => (
-                <PlatformsDiv key={index} img={platform.img} name={platform.name} />
-              ))}
-            </div>
+            {gameDay.game.name === 'Descansito'
+              ? null
+              : <>
+                <div>
+                  <h3>Plataformas donde juego: </h3>
+                  {gameDay.game.platforms.map((platform, index) => (
+                    <PlatformsDiv key={index} img={platform.img} name={platform.name} />
+                  ))}
+                </div>
 
-            <h3>Horario: </h3>
-            <p>Inicia: {initialTimeForUserCountry} </p>
-            <p>Termina: {endTimeForUserCountry}</p>
+                <h3>Horario: </h3>
+                <p>Inicia: {initialTimeForUserCountry} </p>
+                <p>Termina: {endTimeForUserCountry}</p>
 
-            </ExtraInfo> //eslint-disable-line
+              </>}
+          </ExtraInfo> //eslint-disable-line
 
           : null}
 

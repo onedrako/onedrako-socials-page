@@ -3,11 +3,10 @@ import styled from 'styled-components'
 const ScheduleCardContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 40% 60%;
   place-items: center;
   margin-bottom: 20px;
   & p{
-
     @media (min-width: 485px) {
       font-size: 1.4rem;
     }
@@ -27,11 +26,14 @@ const ScheduleCardContainer = styled.div`
       width: 80px;
     }
   }
+  @media (min-width: 750px) {
+    grid-template-columns: 60% 40%;
+  }
 `
 const FlagsContainer = styled.div`
   display: grid;
   grid-column-gap: 3px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   direction: rtl
   width: 100%;
   @media (min-width: 600px) {
@@ -42,9 +44,10 @@ const FlagsContainer = styled.div`
 
 const SchedulesPerCountry = styled.div`
   display: grid;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
   justify-content: start;
+  text-align: center;
 `
 
 export { ScheduleCardContainer, FlagsContainer, SchedulesPerCountry }

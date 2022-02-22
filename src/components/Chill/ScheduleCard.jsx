@@ -11,6 +11,7 @@ const ScheduleCard = (props) => {
         <SchedulesPerCountry>
           <p>Inicio: {props.initialTime}</p>
           <p>Final: {props.endTime}</p>
+          <p>Zona Horaria: {props.timeZone}</p>
         </SchedulesPerCountry>
       </ScheduleCardContainer>
     </>

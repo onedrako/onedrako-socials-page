@@ -42,7 +42,7 @@ const GameDayCardContainer = styled.div`
 const CardContainer = styled.div.attrs({
   shadowColor: props => {
     if (props.shortName === 'ESP') {
-      return 'rgba(251, 186, 0, 0.75)'
+      return 'rgba(145, 70, 255, 0.75)'
     } else {
       return 'rgba(0, 0, 0, 0.5)'
     }
@@ -168,7 +168,7 @@ const appear = keyframes`
 const ExtraInfo = styled.div.attrs({
   shadowColor: props => {
     if (props.shortName === 'ESP') {
-      return 'rgba(251, 186, 0, 0.75)'
+      return 'rgba(145, 70, 255, 0.75)'
     } else {
       return 'rgba(0, 0, 0, 0.5)'
     }
