@@ -69,8 +69,8 @@ const ChillComponent = () => {
     let gameModalId
 
     const gamesInOrderOfAvailability = [
-      ...gamesInfo.filter(game => { return game.available === true }),
-      ...gamesInfo.filter(game => { return game.available === false })
+      ...gamesInfo.filter(game => { return game.available === true }).sort((a, b) => { return a.id - b.id }),
+      ...gamesInfo.filter(game => { return game.available === false }).sort((a, b) => { return a.id - b.id })
     ]
 
     if (!pattern) {
