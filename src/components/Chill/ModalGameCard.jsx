@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import {
   ModalStructureForGameCard,
   LeftArrow,
@@ -11,10 +12,13 @@ import {
 } from '../../styles/Chill/Modal'
 
 const ModalGameCard = ({ info, pushInfo }) => {
+  const initialTime = info.initialTime
+
   const formatDate = (dateToConvert) => {
-    const date = new Date(dateToConvert)
-    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
-    return date.toLocaleDateString('es-ES', options)
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+    const date = moment.tz(`${dateToConvert.substring(0, 10)}T${initialTime}`, 'America/Mexico_City')
+    return moment.tz(date, userTimeZone).locale('es').format('dddd, ll')
   }
 
   return (

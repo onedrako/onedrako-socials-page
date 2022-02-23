@@ -75,6 +75,9 @@ const ChillComponent = () => {
 
     if (!pattern) {
       gameModalId = gamesInOrderOfAvailability.filter(game => { return game.id === id })[0]
+      if (gameDayData.filter(gameDay => gameDay.game.id === id).length > 0) {
+        gameModalId.initialTime = gameDayData.filter(gameDay => gameDay.game.id === id)[0].schedule.initialTime
+      }
       setModalGameCardInfo(gameModalId)
       return
     }
@@ -184,7 +187,7 @@ const ChillComponent = () => {
             </GameCardContainer>
 
           </SectionContainer>
-        </>}
+          </>}
     </main>
   )
 }
