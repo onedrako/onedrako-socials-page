@@ -5,9 +5,9 @@ import { StyledNav } from '../../styles/Nav/StyledNav'
 
 const paths = {
   home: { path: '/', name: 'Home', url: 'https://cdn-icons-png.flaticon.com/512/609/609803.png' },
-  chill: { path: 'chill', name: 'Chill', url: 'https://image.flaticon.com/icons/png/512/3291/3291659.png' },
-  productividad: { path: 'productividad', name: 'Productividad', url: 'https://image.flaticon.com/icons/png/512/3291/3291659.png' },
-  discord: { path: 'discord', name: 'Discord', url: 'https://cdn-icons-png.flaticon.com/512/2111/2111370.png' }
+  chill: { path: 'chill', name: 'Chill', url: 'https://i.imgur.com/Yt28NxC.png' },
+  productividad: { path: 'productividad', name: 'Productividad', url: 'https://i.imgur.com/Yt28NxC.png' },
+  discord: { path: 'discord', name: 'Discord', url: 'https://i.imgur.com/bGLw3e1.png' }
 }
 
 // const reducer = (state, action) => {

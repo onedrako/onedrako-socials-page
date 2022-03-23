@@ -13,7 +13,6 @@ import { scrollToDownload } from '../../utils/scrollToDownload'
 const FormHuellita = ({ setVisible, setDisabled, language }) => {
   const { defineValues, dispatch } = useContext(AppContext)
   const [t] = useTranslation('global')
-  console.log(language)
 
   return (
     <Formik
@@ -63,6 +62,7 @@ const FormHuellita = ({ setVisible, setDisabled, language }) => {
             <option value='Argentina'>Argentina</option>
             <option value='Bolivia'>Bolivia</option>
             <option value='Brasil'>Brasil</option>
+            <option value='Canada'>Canada</option>
             <option value='Chile'>Chile</option>
             <option value='Colombia'>Colombia</option>
             <option value='Ecuador'>Ecuador</option>
@@ -71,12 +71,15 @@ const FormHuellita = ({ setVisible, setDisabled, language }) => {
             {language === 'es' ? (<option value='Estados Unidos'>{t('discord.huellitaForm.USA')}</option>) : null}
             <option value='Guatemala'>Guatemala</option>
             <option value='Honduras'>Honduras</option>
+            <option value='Italia'>Italia</option>
             <option value='México'>México</option>
             <option value='Panamá'>Panamá</option>
             <option value='Perú'>Perú</option>
             <option value='Portugal'>Portugal</option>
-            <option value='Republica Dominicana'>Republica Dominicana</option>
+            {language === 'es' ? (<option value='Reino Unido'>{t('discord.huellitaForm.UK')}</option>) : null}
+            <option value='República Dominicana'>Republica Dominicana</option>
             {language === 'en' ? (<option value='United States'>{t('discord.huellitaForm.USA')}</option>) : null}
+            {language === 'es' ? (<option value='United Kingdom'>{t('discord.huellitaForm.UK')}</option>) : null}
             <option value='Uruguay'>Uruguay</option>
             <option value='Venezuela'>Venezuela</option>
           </Field>

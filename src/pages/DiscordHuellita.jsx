@@ -58,14 +58,14 @@ const DiscordHuellita = () => {
         </LanguagesContainer>
 
         <StyledTitles>
-          <img src='https://image.flaticon.com/icons/png/512/2626/2626288.png' alt='Discord' />
+          <img src='https://i.imgur.com/bGLw3e1.png' alt='Discord' />
           <h1>{t('discord.huellitaForm.title')}</h1>
         </StyledTitles>
-        <Titles title={t('discord.huellitaForm.instructionsTitle')} url='https://image.flaticon.com/icons/png/512/672/672634.png' />
+        <Titles title={t('discord.huellitaForm.instructionsTitle')} url='https://i.imgur.com/q97k5rd.png' />
         <StyledP>{t('discord.huellitaForm.motive1')}</StyledP>
         <StyledP>{t('discord.huellitaForm.motive2')}</StyledP>
         <StyledP>{t('discord.huellitaForm.motive3')}</StyledP>
-        <Titles title={t('discord.huellitaForm.considerations')} url='https://image.flaticon.com/icons/png/512/2534/2534888.png' />
+        <Titles title={t('discord.huellitaForm.considerations')} url='https://i.imgur.com/EpqThYa.png' />
         <ol>
           <StyledLi>{t('discord.huellitaForm.consideration1')}</StyledLi>
           <StyledLi>{t('discord.huellitaForm.consideration2')}</StyledLi>
@@ -82,7 +82,7 @@ const DiscordHuellita = () => {
 
       <StyledFormSection margin='25px auto'>
         <StyledTitles>
-          <img src='https://image.flaticon.com/icons/png/512/3157/3157914.png' alt='Imagen Formulario' />
+          <img src='https://i.imgur.com/UbTr1t4.png' alt='Imagen Formulario' />
           <h1>{t('discord.huellitaForm.formTitle')}</h1>
         </StyledTitles>
         <FormHuellita setVisible={setVisible} setDisabled={setDisabled} language={languageSelect} />
