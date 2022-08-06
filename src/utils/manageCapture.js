@@ -1,10 +1,10 @@
 import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 
-const getCapture = () => {
+const getCapture = (selector) => {
   const container = document.querySelector('#downloadImg')
 
-  const capture = document.querySelector('#capture')
+  const capture = document.querySelector(`#${selector}`)
   const preImage = document.querySelector('#Presentation-Img')
 
   if (preImage) {
