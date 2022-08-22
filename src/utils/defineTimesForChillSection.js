@@ -5,6 +5,10 @@ const defineTimesForChillSection = (data) => {
   let dateToCountDown
   const today = defineToday(data)
 
+  if (today.length === 0) {
+    return
+  }
+
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions()
   const myStartStreamAreaInMexicoCity = moment.tz(`${today[0].date.substring(0, 10)}T${today[0].schedule.initialTime}`, 'America/Mexico_City')
   const myEndStreamAreaInMexicoCity = moment.tz(`${today[0].date.substring(0, 10)}T${today[0].schedule.endTime}`, 'America/Mexico_City')

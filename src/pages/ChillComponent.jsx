@@ -117,7 +117,10 @@ const ChillComponent = () => {
   useEffect(() => {
     axios.get(gameDaysApi).then(response => {
       setGameDayData(response.data.filter(gameDay => { return gameDay.schedule }))
-      setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
+      console.log(typeof defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
+      if (defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })) !== undefined) {
+        setTime(defineTimesForChillSection(response.data.filter(gameDay => { return gameDay.schedule })))
+      }
       setLoading(true)
     })
   }, [])
@@ -142,10 +145,10 @@ const ChillComponent = () => {
         contentLabel='Example Modal'
       >
         <ModalInfo />
+
       </Modal>
-      {!loading
-        ? <p style={{ textAlign: 'center' }}>Cargando los datos, espere por favor, Gabito y Lola Catalina están peleando con un santo buggazo...</p>
-        : <>
+      {time.length > 0 &&
+        <>
           <SectionContainer>
             <NextStreamDiv>
               <h2>Siguiente Stream en:</h2>
@@ -159,6 +162,11 @@ const ChillComponent = () => {
               : <SchedulesContainer flagsInfo={scheduleInfo && scheduleInfo.countries} initialTime={time.initialStreamSchedule} endTime={time.endStreamSchedule} timeZone={time.userTimeZone} />}
 
           </SectionContainer>
+        </>}
+
+      {!loading
+        ? <p style={{ textAlign: 'center' }}>Cargando los datos, espere por favor, Gabito y Lola Catalina están peleando con un santo buggazo...</p>
+        : <>
 
           <SectionContainer title='Calendario Semanal'>
             <GameSchedulesContainer>
