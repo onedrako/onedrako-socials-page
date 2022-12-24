@@ -1,15 +1,17 @@
 import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 
-const getCapture = (selector) => {
+const getCapture = () => {
   const container = document.querySelector('#downloadImg')
 
-  const capture = document.querySelector(`#${selector}`)
+  const capture = document.querySelector('#capture')
   const preImage = document.querySelector('#Presentation-Img')
 
   if (preImage) {
     container.removeChild(preImage)
   }
+
+  console.log(capture)
 
   domtoimage.toPng(capture).then(dataUrl => {
     const img = new Image()
